@@ -21,7 +21,7 @@ Two-photon microscopy is a cornerstone technique in neuroscience research, but c
 
 The second version of this project allows user to either:
 
-  - Independently drive up to 24 arbitrary spectrum LEDs to meet user requirements. Using the <a href="https://www.ti.com/lit/ds/symlink/tlc5947.pdf">LTC5947 LED driver</a>.
+  - Independently drive up to 24 arbitrary spectrum LEDs to meet user requirements. Using the <a href="https://www.ti.com/lit/ds/symlink/tlc5947.pdf">TLC5947 LED driver</a>.
   - Control external light source generator such as the <a href="https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=13597">Thorlabs Chrolis</a>. Using TTL logic circuits.
 
 <p style='text-align: justify;'>
@@ -58,17 +58,23 @@ Here, we present such a solution. Our system can either line-synch up to 24 inde
 </p>
 
 <p align="justify">
-Alongside, we also provided custom casing files (for either 3d print or laser-cut), designed suggestions for optically combining LED banks using Thorlabs parts, and an alternative 3D-printed LED holder and microscope chamber.
+Alongside, we also provided <a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/tree/main/Casing%20Files">custom casing files</a> (for either 3d print or laser-cut), <a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/tree/main/3D%20files">designed suggestions</a> for optically combining LED banks using Thorlabs parts, and an alternative 3D-printed LED holder and microscope chamber.
 </p>
 
 <p align="justify">
-The device is built around an ESP32, a microcontroller which exchange signals with the recording setup, drive the light sources and runs on C++. However, users do not need to interfere with the source code as we provide an intuitive and interactive Graphical User Interface (GUI), from which all functions and variables can be manipulated.
-<a href="">Here</a>, is the full user guide documentation.
+The device is built around an <a href="https://www.espressif.com/en/products/socs/esp32">ESP32</a>, a microcontroller which exchange signals with the recording setup, drive the light sources and runs on C++. However, users do not need to interfere with the source code as we provide an intuitive and interactive <a href="">Graphical User Interface</a> (GUI), from which all functions and variables can be manipulated.
 </p>
 
-<img align="center" src="https://github.com/BadenLab/LED-Zappelin/blob/master/Images/Fig1.png">
+<p align="justify">
+<a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/blob/main/GUI_UserManual.md">Here</a>, is the full user guide documentation.
+</p>
 
-<h5 align="justify"> a) A fully assembled stimulator. b) Rendering of the custom-printed circuit board which accommodates the microcontroller, the LED driver and up to 24 LED channels. c) Schematics illustrating the circuit that controls the LED output. The blanking input can be inverted by a switch before reaching the output enable pin on the LED driver (electronically switching off the LEDs) and sending the signal to the micro-controller. A second switch control the blanking signal voltage as it needs to be adapted depending on the logic of the microcontroller used (3.3V for ESP32, 5V for Arduino). The microcontroller controls the LED driver through an SPI connection and send trigger signal output to an external. d) Illustration of the raster scan method described. The “blanking signal” is synchronous with the scanning logic, enabling the LEDs during the scanning mirrors retrace (black) and shutting them off during the acquisition (red), therefore providing temporal separation between stimulation and detection (Modified from (Euler et al. 2019)</h5>
+<p align="left">
+<img align="center" src="./Images/LED-Zappelin-V2.png" width="400" height="200">
+<img align="center" src="./Images/LED-Zappelin-V2-Chrolis.png" width="400" height="200">
+</p>
+
+<h5 align="justify"> <em>Left: </em>LED Zappelin' mounted with a TLC 5947 controlling up to 24 LED channels. <em>Right: </em>LED Zappelin' mounted with TTL circuit controlling two 6-High_Power LED Chrolis systems</h5>
 
 ***
 
