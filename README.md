@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="left"><img width="270" height="170" src="./Images/SpikyLogo.png">
 
 <h1 align="center"> LED Zappelin' v2</h1></p>
@@ -88,3 +89,6 @@ The device is built around an ESP32, a microcontroller which exchange signals wi
 <h5 align="justify">  a) Power recording of a 4 LED system using the TLC5947 (solid lines) and their expected brightness if directly controlled by a microcontroller (dashed lines). All LEDs have been set up to the same power (40nW), with equal max intensities values in the Arduino code. b) Same as a) but with LEDs set up at different max intensities in the Arduino code. Here the linearity of the LED intensity output remains constant. </5>
 
 ***
+=======
+# LED-Zappelin-V2
+>>>>>>> 1892e51c7560366fad7b1b9efeeaa54bd3a136fd
