@@ -70,8 +70,8 @@ The device is built around an <a href="https://www.espressif.com/en/products/soc
 </p>
 
 <p align="left">
-<img align="center" src="./Images/LED-Zappelin-V2.png" width="400" height="200">
-<img align="center" src="./Images/LED-Zappelin-V2-Chrolis.png" width="400" height="200">
+<img align="center" src="./Images/LED-Zappelin-V2.png" width="450" height="200">
+<img align="center" src="./Images/LED-Zappelin-V2-Chrolis.png" width="450" height="200">
 </p>
 
 <h5 align="justify"> <em>Left: </em>LED Zappelin' mounted with a TLC 5947 controlling up to 24 LED channels. <em>Right: </em>LED Zappelin' mounted with TTL circuit controlling two 6-High_Power LED Chrolis systems</h5>
