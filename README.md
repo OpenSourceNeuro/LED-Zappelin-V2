@@ -24,6 +24,13 @@ The second version of this project allows user to either:
   - Independently drive up to 24 arbitrary spectrum LEDs to meet user requirements. Using the <a href="https://www.ti.com/lit/ds/symlink/tlc5947.pdf">TLC5947 LED driver</a>.
   - Control external light source generator such as the <a href="https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=13597">Thorlabs Chrolis</a>. Using TTL logic circuits.
 
+  <p align="center">
+  <img align="center" src="./Images/LED-Zappelin-V2.png" width="400" height="175">
+  <img align="center" src="./Images/LED-Zappelin-V2-Chrolis.png" width="400" height="175">
+  </p>
+
+  <h5 align="justify"> <em>Left: </em>LED Zappelin' mounted with a TLC 5947 controlling up to 24 LED channels. <em>Right: </em>LED Zappelin' mounted with TTL circuit controlling two 6-High_Power LED Chrolis systems</h5>
+
 <p style='text-align: justify;'>
 In the <a href=https://pubmed.ncbi.nlm.nih.gov/35498254/>original publication</a>, we demonstrate the utility of our stimulator for colour vision experiments on the in vivo tetrachromatic zebrafish retina and for optogenetic circuit mapping in Drosophila.
 </p>
@@ -32,7 +39,7 @@ In the <a href=https://pubmed.ncbi.nlm.nih.gov/35498254/>original publication</a
 <br>
 
 
-- [An open and versatile LED controler](#Introduction)
+- [An open and versatile LED controller](#Introduction)
 - [A £100 DIY efficient stimulator](https://github.com/BadenLab/LED-Zappelin/blob/master/Bills%20of%20Materials/BOM%20-%20Stimulator.csv)
 - [A stimulator for visual neuroscience](#Colour-Vision-Experiment)
 - [A stimulator for optogenetics](#Optogenetics-Experiment)
@@ -68,13 +75,6 @@ The device is built around an <a href="https://www.espressif.com/en/products/soc
 <p align="justify">
 <a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/blob/main/GUI_UserManual.md">Here</a>, is the full user guide documentation.
 </p>
-
-<p align="left">
-<img align="center" src="./Images/LED-Zappelin-V2.png" width="400" height="175">
-<img align="center" src="./Images/LED-Zappelin-V2-Chrolis.png" width="400" height="175">
-</p>
-
-<h5 align="justify"> <em>Left: </em>LED Zappelin' mounted with a TLC 5947 controlling up to 24 LED channels. <em>Right: </em>LED Zappelin' mounted with TTL circuit controlling two 6-High_Power LED Chrolis systems</h5>
 
 ***
 
