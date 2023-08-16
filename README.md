@@ -33,6 +33,8 @@ The second version of this project allows user to either:
 
   <h5 align="justify"> <em>Left: </em>LED Zappelin' mounted with a TLC 5947 controlling up to 24 LED channels. <em>Right: </em>LED Zappelin' mounted with TTL circuit controlling two 6-High_Power LED Chrolis systems</h5>
 
+<br></br>
+
 <p style='text-align: justify;'>
 In the <a href=https://pubmed.ncbi.nlm.nih.gov/35498254/>original publication</a>, we demonstrate the utility of our stimulator for colour vision experiments on the in vivo tetrachromatic zebrafish retina and for optogenetic circuit mapping in Drosophila.
 </p>
@@ -60,6 +62,7 @@ Combining two-photon imaging with additional light stimulation – for example f
 <p align="justify">
 A temporal separation between light stimulation and fluorescence detection, for example during the scan-retrace, can ameliorate these problems.
 This problem can be readily solved electronically, for example through use of a microcontroller.
+<img align="right" src="./Images/Retrace.png" width="400" ">
 </p>
 
 <p align="justify">
