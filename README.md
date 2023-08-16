@@ -24,7 +24,7 @@ The second version of this project allows user to either:
   - Independently drive up to 24 arbitrary spectrum LEDs to meet user requirements. Using the <a href="https://www.ti.com/lit/ds/symlink/tlc5947.pdf">TLC5947 LED driver</a>.
   - Control external light source generator such as the <a href="https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=13597">Thorlabs Chrolis</a>. Using TTL logic circuits.
 
-<br>
+</br>
 
   <p align="center">
   <img align="center" src="./Images/LED-Zappelin-V2.png" width="400" height="200">
