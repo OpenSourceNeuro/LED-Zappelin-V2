@@ -60,9 +60,9 @@ Combining two-photon imaging with additional light stimulation – for example f
 </p>
 
 <p align="justify">
+<img align="right" src="./Images/Retrace.png" width="450">
 A temporal separation between light stimulation and fluorescence detection, for example during the scan-retrace, can ameliorate these problems.
 This problem can be readily solved electronically, for example through use of a microcontroller.
-<img align="right" src="./Images/Retrace.png" width="400" ">
 </p>
 
 <p align="justify">
