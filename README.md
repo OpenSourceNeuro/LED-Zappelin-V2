@@ -1,25 +1,22 @@
-<<<<<<< HEAD
-<p align="left"><img width="270" height="170" src="./Images/SpikyLogo.png">
+<p align="left">
+<img width="270" height="170" src="./Images/SpikyLogo.png">
+</p>
 
-<h1 align="center"> LED Zappelin' v2</h1></p>
+<h1 align="center"> LED Zappelin' v2</h1>
 <h3 align="center">  An Open Source and versatile LED controller for arbitrary spectrum visual stimulation and optogenetics during two-photon imaging.</h3></p>
-<p align="center"><h6 align="right">developed by M.J.Y. Zimmermann, A.M. Chagas & T. Baden</h6></p>
+<h6 align="right">developed by M.J.Y. Zimmermann, A.M. Chagas & T. Baden</h6>
 
 <br>
 
-
-
-
-This project is licensed under the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License v3.0</a><br>
+This project is licensed under the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License v3.0</a>
+<br>
 The hardware is licensed under the <a href="https://cern-ohl.web.cern.ch">CERN OHL v1.2</a>
 
 
 ***
 
-
 <p style='text-align: justify;'>
-Two-photon microscopy is a cornerstone technique in neuroscience research, but combining this technology with spectrally arbitrary light stimulation can be challenging due to crosstalk between stimulation light and fluorescence detection.
-To overcome this limitation, we present LED Zappelin': a simple and low-cost electronic solution to rapidly time-interleave stimulation and detection epochs during scans.
+Two-photon microscopy is a cornerstone technique in neuroscience research, but combining this technology with spectrally arbitrary light stimulation can be challenging due to crosstalk between stimulation light and fluorescence detection. To overcome this limitation, we present LED Zappelin': a simple and low-cost electronic solution to rapidly time-interleave stimulation and detection epochs during scans.
 </p>
 
 The second version of this project allows user to either:
@@ -43,6 +40,7 @@ In the <a href=https://pubmed.ncbi.nlm.nih.gov/35498254/>original publication</a
 - [A step by step calibration script](https://github.com/BadenLab/LED-Zappelin/blob/master/Instruction%20Manual/Stimulator%20Calibration/Stimulator_Calibration.ipynb)
 - [Repository Structure](#Repository-Structure)
 
+<br>
 
 ## Introduction
 
