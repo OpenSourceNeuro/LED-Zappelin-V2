@@ -125,11 +125,17 @@ We chose LEDs and band pass filters in such manner that the stimulating light an
 
 <br></br>
 
+<p align="justify">
  We recorded light-driven calcium signals under 2-photon from [retinal bipolar cells in vivo in the tetrachromatic larval zebrafish](https://github.com/BadenLab/LED-Zappelin/blob/master/References/Zimmermann%202018%20-%20Zebrafish%20Differentially%20Procces%20Colour%20across%20Visual%20Space%20to%20Match%20Natural%20Scenes.pdf). We used a transgenic line expressing a genetically encoded biosensors for calcium at the  bipolar cell synaptic terminals level (ctbp2:SyGCaMP6)  within the inner plexiform layer (IPL).
+</p>
 
+<p align="justify">
 Following [established protocols](https://github.com/BadenLab/LED-Zappelin/blob/master/References/Denk%202009%20-%20Eyecup%20Scope%20-%20optical%20recordings%20of%20light%20stimulus-evoked%20fluorescence%20signals%20in%20the%20retina.pdf), we used a Sutter MOM microscope where light stimulation is displayed through the objective directly onto the fish retina along with the laser excitation. Fluorescence is also collected through the objective as well as from below the stage (not shown).
+</p>
 
+<p align="justify">
 We presented full field steps of red, green, blue and UV light to the fish eye (respectively 567, 480, 420 and 365nm), and recorded evoked calcium signals as a readout of synaptic activity. We observed spectrally different tunings from distinct bipolar cell terminals  without detectable stimulus artefact across the scan.
+</p>
 
 <p align="center">
 <img align="center" src="./Images/Colour_Experiment.png">
@@ -142,13 +148,19 @@ We presented full field steps of red, green, blue and UV light to the fish eye (
 
 In addition to colour vision experiments, LED Zappelin' is well suited for optogenetic manipulations.
 
-<p align="justify">Here we illustrate this application in Drosophila larvae, were we recorded brain-wide calcium signals under 2P in response to optogenetic stimulation of all olfactory sensory neurons (OSNs).  We expressed the red-shifted channel rhodopsin CsChrimson OSNs and the genetically encoded calcium indicator GCaMP6s pan-neuronally by using larvae with the genotype: elav-Gal4;UAS-GCaMP6s/Orco-LexA;LexAOp-CsChrimson.</p>
+<p align="justify">
+Here we illustrate this application in Drosophila larvae, were we recorded brain-wide calcium signals under 2P in response to optogenetic stimulation of all olfactory sensory neurons (OSNs).  We expressed the red-shifted channel rhodopsin CsChrimson OSNs and the genetically encoded calcium indicator GCaMP6s pan-neuronally by using larvae with the genotype: elav-Gal4;UAS-GCaMP6s/Orco-LexA;LexAOp-CsChrimson.
+</p>
 
+<p align="justify">
 We placed first instar larvae under a custom-made 2P microscope in a [3D-printed optogenetics LED chamber](https://github.com/BadenLab/LED-Zappelin/blob/master/3D%20Design/Optogenetics%20Components).
 Red light stimulation was delivered from around the sides of the recording chamber and GCaMP6s fluorescence intensity was collected by two detectors one through the objective lens, and a sub-stage PMT.
 We presented full field illumination steps of 615 nm light lasting 0.5 s and an inter-stimulus interval of either 3 s (b) or 10 s (c).
+</p>
 
-<p align="justify">We observed robust stimulus-evoked activity in the primary olfactory sensory centres of the larval brain, the antennal lobes (red outlines). Similarly to colour vision experiments, we detected no light artefact. </p>
+<p align="justify">
+We observed robust stimulus-evoked activity in the primary olfactory sensory centres of the larval brain, the antennal lobes (red outlines). Similarly to colour vision experiments, we detected no light artefact.
+</p>
 
 <p align="center">
 <img align="center" src="./Images/Optogenetics_Experiment.png">
