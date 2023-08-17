@@ -86,7 +86,7 @@ The device is built around an <a href="https://www.espressif.com/en/products/soc
 
 <p align="center">
 <img align="center" src="./Images/LEDzap_GUI.jpg" width="400" height="250">
-<img align="center" src="./Images/LEDzap_GUI2.jpg" width="400" height="250">
+<img align="center" src="./Images/LEDzap_GUI2.JPG" width="400" height="250">
 </p>
 
 <h5 align="justify"> <em>Left: </em>LED Zappelin' GUI controlling 4 LEDs, all executing a chirp stimulus. <em>Right: </em>LED Zappelin' controlling 12 LED channels from two Chrolis systems, executing successive On/Off stimulati</h5>
