@@ -126,11 +126,11 @@ We chose LEDs and band pass filters in such manner that the stimulating light an
 <br></br>
 
 <p align="justify">
- We recorded light-driven calcium signals under 2-photon from [retinal bipolar cells in vivo in the tetrachromatic larval zebrafish](https://github.com/BadenLab/LED-Zappelin/blob/master/References/Zimmermann%202018%20-%20Zebrafish%20Differentially%20Procces%20Colour%20across%20Visual%20Space%20to%20Match%20Natural%20Scenes.pdf). We used a transgenic line expressing a genetically encoded biosensors for calcium at the  bipolar cell synaptic terminals level (ctbp2:SyGCaMP6)  within the inner plexiform layer (IPL).
+ We recorded light-driven calcium signals under 2-photon from <a href="https://pubmed.ncbi.nlm.nih.gov/29937350/"> retinal bipolar cells in vivo in the tetra-chromatic larval zebrafish</a>. We used a transgenic line expressing a genetically encoded biosensors for calcium at the  bipolar cell synaptic terminals level (ctbp2:SyGCaMP6)  within the inner plexiform layer (IPL).
 </p>
 
 <p align="justify">
-Following [established protocols](https://github.com/BadenLab/LED-Zappelin/blob/master/References/Denk%202009%20-%20Eyecup%20Scope%20-%20optical%20recordings%20of%20light%20stimulus-evoked%20fluorescence%20signals%20in%20the%20retina.pdf), we used a Sutter MOM microscope where light stimulation is displayed through the objective directly onto the fish retina along with the laser excitation. Fluorescence is also collected through the objective as well as from below the stage (not shown).
+Following <a href="https://pubmed.ncbi.nlm.nih.gov/2321027/">established protocols</a>, we used a Sutter MOM microscope where light stimulation is displayed through the objective directly onto the fish retina along with the laser excitation. Fluorescence is also collected through the objective as well as from below the stage (not shown).
 </p>
 
 <p align="justify">
@@ -153,7 +153,7 @@ Here we illustrate this application in Drosophila larvae, were we recorded brain
 </p>
 
 <p align="justify">
-We placed first instar larvae under a custom-made 2P microscope in a [3D-printed optogenetics LED chamber](https://github.com/BadenLab/LED-Zappelin/blob/master/3D%20Design/Optogenetics%20Components).
+We placed first instar larvae under a custom-made 2P microscope in a <a href"https://github.com/OpenSourceNeuro/LED-Zappelin-V2/tree/main/3D%20files/Optogenetics%20Components">3D-printed optogenetics LED chamber</a>.
 Red light stimulation was delivered from around the sides of the recording chamber and GCaMP6s fluorescence intensity was collected by two detectors one through the objective lens, and a sub-stage PMT.
 We presented full field illumination steps of 615 nm light lasting 0.5 s and an inter-stimulus interval of either 3 s (b) or 10 s (c).
 </p>
