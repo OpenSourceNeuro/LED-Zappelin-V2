@@ -26,12 +26,12 @@ The second version of this project allows user to either:
 
 </br>
 
-  <p align="center">
-  <img align="center" src="./Images/LED-Zappelin-V2.png" width="400" height="200">
-  <img align="center" src="./Images/LED-Zappelin-V2-Chrolis.png" width="400" height="200">
-  </p>
+<p align="center">
+<img align="center" src="./Images/LED-Zappelin-V2.png" width="400" height="200">
+<img align="center" src="./Images/LED-Zappelin-V2-Chrolis.png" width="400" height="200">
+</p>
 
-  <h5 align="justify"> <em>Left: </em>LED Zappelin' mounted with a TLC 5947 controlling up to 24 LED channels. <em>Right: </em>LED Zappelin' mounted with TTL circuit controlling two 6-High_Power LED Chrolis systems</h5>
+<h5 align="justify"> <em>Left: </em>LED Zappelin' mounted with a TLC 5947 controlling up to 24 LED channels. <em>Right: </em>LED Zappelin' mounted with TTL circuit controlling two 6-High_Power LED Chrolis systems</h5>
 
 <br></br>
 
@@ -81,6 +81,17 @@ Alongside, we also provided <a href="https://github.com/OpenSourceNeuro/LED-Zapp
 <p align="justify">
 The device is built around an <a href="https://www.espressif.com/en/products/socs/esp32">ESP32</a>, a microcontroller which exchange signals with the recording setup, drive the light sources and runs on C++. However, users do not need to interfere with the source code as we provide an intuitive and interactive <a href="">Graphical User Interface</a> (GUI), from which all functions and variables can be manipulated.
 </p>
+
+</br>
+
+<p align="center">
+<img align="center" src="./Images/LEDzap_GUI.jpg" width="400" height="250">
+<img align="center" src="./Images/LEDzap_GUI2.jpg" width="400" height="250">
+</p>
+
+<h5 align="justify"> <em>Left: </em>LED Zappelin' GUI controlling 4 LEDs, all executing a chirp stimulus. <em>Right: </em>LED Zappelin' controlling 12 LED channels from two Chrolis systems, executing successive On/Off stimulati</h5>
+
+<br></br>
 
 <p align="justify">
 <a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/blob/main/GUI_UserManual.md">Here</a>, is the full user guide documentation.
