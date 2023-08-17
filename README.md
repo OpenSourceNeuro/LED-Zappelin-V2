@@ -104,7 +104,6 @@ The device is built around an <a href="https://www.espressif.com/en/products/soc
 
 ## Colour Vision Experiment
 
-<br>
 
 [![Demo CountPages alpha](https://j.gifs.com/P7PMLn.gif)](https://youtu.be/FhLoFGbbpPo)
 
