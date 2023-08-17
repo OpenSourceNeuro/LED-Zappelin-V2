@@ -98,6 +98,8 @@ The device is built around an <a href="https://www.espressif.com/en/products/soc
 <a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/blob/main/GUI_UserManual.md">Here</a>, is the full user guide documentation.
 </p>
 
+<br>
+
 ***
 
 ## Colour Vision Experiment
