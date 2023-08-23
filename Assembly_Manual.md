@@ -72,7 +72,7 @@ The Adafruit TLC5947 LED driver is a constant current driver configured by defau
 <br></br>
 
 
-The stimulator casing can either be 3D printed(<a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/tree/main/Casing%20Files/LED-Zappelin%20V2/STL">STL Files</a>) or laser cut(<a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/tree/main/Casing%20Files/LED-Zappelin%20V2/DXF">DXF Files</a>)
+The stimulator casing can either be 3D printed (<a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/tree/main/Casing%20Files/LED-Zappelin%20V2/STL">STL Files</a>) or laser cut (<a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/tree/main/Casing%20Files/LED-Zappelin%20V2/DXF">DXF Files</a>)
 
 The default casing is designed to hold a 2*8 neopixel stick that can be used as LED proxy for the user to check the ongoing status of the stimulation in the system.
 
@@ -89,6 +89,6 @@ The assemly of this board is very similar to the previous one. the TLC LED drive
 </p>
 
 
-The stimulator casing can either be 3D printed(<a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/tree/main/Casing%20Files/LED-Zappelin%20V2%20-%20Chrolis/STL">STL Files</a>) or laser cut(<a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/tree/main/Casing%20Files/LED-Zappelin%20V2%20-%20Chrolis/DXF">DXF Files</a>)
+The stimulator casing can either be 3D printed (<a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/tree/main/Casing%20Files/LED-Zappelin%20V2%20-%20Chrolis/STL">STL Files</a>) or laser cut (<a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/tree/main/Casing%20Files/LED-Zappelin%20V2%20-%20Chrolis/DXF">DXF Files</a>)
 
 The default casing is designed to hold a 2*8 neopixel stick that can be used as LED proxy for the user to check the ongoing status of the stimulation in the system.
