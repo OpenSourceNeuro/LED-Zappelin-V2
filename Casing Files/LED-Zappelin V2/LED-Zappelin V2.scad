@@ -1,6 +1,6 @@
  //Wall = 3;
 tol = 0.1;
-Smoothness = 60;
+Smoothness = 360;
 xxx = 50;
 
 x_PCB = 120;
