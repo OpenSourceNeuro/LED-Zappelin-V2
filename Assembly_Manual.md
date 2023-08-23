@@ -71,10 +71,21 @@ The Adafruit TLC5947 LED driver is a constant current driver configured by defau
 
 <br></br>
 
-
+<p align="justify">
 The stimulator casing can either be 3D printed (<a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/tree/main/Casing%20Files/LED-Zappelin%20V2/STL">STL Files</a>) or laser cut (<a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/tree/main/Casing%20Files/LED-Zappelin%20V2/DXF">DXF Files</a>)
+</p>
 
+<p align="center">
+<img align="center" width="500" height="300" src="./Images/LEDZap_Casing.png">
+</p>
+
+<p align="justify">
 The default casing is designed to hold a 2*8 neopixel stick that can be used as LED proxy for the user to check the ongoing status of the stimulation in the system.
+</p>
+
+<p align="center">
+<img align="center" width="300" height="168" src="./Images/Neopixel.png">
+</p>
 
 <br>
 </br>
