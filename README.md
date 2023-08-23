@@ -36,7 +36,7 @@ The second version of this project allows user to either:
 <br></br>
 
 <p style='text-align: justify;'>
-In the <a href=https://pubmed.ncbi.nlm.nih.gov/35498254/>original publication</a>, we demonstrate the utility of our stimulator for colour vision experiments on the in vivo tetrachromatic zebrafish retina and for optogenetic circuit mapping in Drosophila.
+In the <a href=https://pubmed.ncbi.nlm.nih.gov/35498254/>original publication</a>, we demonstrate the utility of our stimulator for colour vision experiments on the in vivo tetra-chromatic zebrafish retina and for optogenetic circuit mapping in Drosophila.
 </p>
 
 
@@ -95,7 +95,7 @@ The device is built around an <a href="https://www.espressif.com/en/products/soc
 <br></br>
 
 <p align="justify">
-<a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/blob/main/GUI_UserManual.md">Here</a>, is the full user guide documentation.
+<a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/blob/main/GUI_UserManual.md"><strong>Here</strong></a>, is the full user guide documentation.
 </p>
 
 <br>
