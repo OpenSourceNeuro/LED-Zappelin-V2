@@ -1,4 +1,4 @@
-//Wall = 3;
+ //Wall = 3;
 tol = 0.1;
 Smoothness = 60;
 xxx = 50;
@@ -27,23 +27,24 @@ PCB = 10;
 PCB2 = 10;
 
 Power = 10;
+PowerSwitch = 10;
 BNC = 10;
 JST = 10;
 DPDT = 10;
 ESP32 = 10;
 Trimmer = 10;
-NeoPixel = 1;
+NeoPixel = 10;
 
 Hex_Bottom = 10;
 Hex_Middle = 10;
 Hex_Top = 10;
 
-Acrylic_Bottom  = 10;
-Acrylic_Top  = 10;
+Acrylic_Bottom  = 1;
+Acrylic_Top  = 1;
 Acrylic_Front  = 1;
-Acrylic_Back  = 10;
-Acrylic_Left  = 10;
-Acrylic_Right  = 10;
+Acrylic_Back  = 1;
+Acrylic_Left  = 1;
+Acrylic_Right  = 1;
 
 // // // Parameters // // // //
 
@@ -117,13 +118,17 @@ x_JST3 = 83;
 y_JST = 12.75;
 z_JST = 6.1;
 
+x_PowerSwitch = 31.3;
+y_PowerSwitch = 50;
+z_PowerSwitch = 10.5;
+
 x_ESP = 55;
 y_ESP = 28;
 z_ESP = 11.5;
 x_USB = 6;
-y_USB = 9;
-z_USB = 6;
-h_USB = 3;
+y_USB = 10;
+z_USB = 7.5;
+h_USB = 2;
 xpos_ESP = 4.3;
 ypos_ESP = y_ESP/2 + 25/2;
 r_pinUSB = 0.6/2;
@@ -229,6 +234,10 @@ if (Power == 1){
     translate([xoffset_pinPower1,yoffset_pinPower1,0])Power();
 }
 
+if (PowerSwitch == 1){
+    PowerSwitch();
+}
+
 if (JST == 1){
     JST2();
     JST8();
@@ -239,25 +248,7 @@ if (ESP32 == 1){
 }
 
 if (Trimmer == 1){
-    for (i = [0:1:1]){
-        translate([x11_trim+i*10,y11_trim,z_PCB+hex_middle])Trimmer();
-    }
-    for (i = [0:1:7]){
-        translate([x12_trim+i*9.65,y11_trim,z_PCB+hex_middle])Trimmer();
-    }
-    for (i = [0:1:1]){
-        translate([x13_trim+i*10,y11_trim,z_PCB+hex_middle])Trimmer();
-    }
-
-    for (i = [0:1:1]){
-        translate([x31_trim+i*10,y31_trim,z_PCB+hex_middle])rotate([0,0,180])Trimmer();
-    }
-    for (i = [0:1:7]){
-        translate([x32_trim+i*9.65,y31_trim,z_PCB+hex_middle])rotate([0,0,180])Trimmer();
-    }
-    for (i = [0:1:1]){
-        translate([x33_trim+i*10,y31_trim,z_PCB+hex_middle])rotate([0,0,180])Trimmer();
-    }
+    Trimmers();
 }
 
 if (NeoPixel == 1 ){
@@ -313,7 +304,7 @@ if (Acrylic_Left == 1 && DXF == 1){
 if (Acrylic_Right == 1 && DXF == 0){
     Acrylic_Right();}
 if (Acrylic_Right == 1 && DXF == 1){
-    Acrylic_Right_DXDF();}
+    Acrylic_Right_DXF();}
 
 
 // // // Modules // // //
@@ -370,11 +361,14 @@ module Power(){
         translate([x_pinPower3,y_pinPower3,-tol-z_PCB])cylinder(r=r_Hole,h=z_PCB+2*tol,$fn=Smoothness);
     }
 }
+module PowerSwitch(){
+    translate([xoffset_pinPower1+10,yoffset_pinPower1,12])cube([x_PowerSwitch,y_PowerSwitch,z_PowerSwitch]);
+}
 
 module JST2(){
-  translate([x_PCB-x_JST1,-xxx,z_PCB])cube([x_JST1,y_JST+xxx,z_JST]);
-  translate([x_PCB-y_JST,0,z_PCB])cube([y_JST+xxx,x_JST2,z_JST]); 
-  translate([x_PCB-x_JST3,y_PCB-y_JST,z_PCB])cube([x_JST3,y_JST+xxx,z_JST]);
+  translate([x_PCB-x_JST1,-xxx,z_PCB])cube([x_JST1-2,y_JST+xxx,z_JST]);
+  translate([x_PCB-y_JST,10,z_PCB])cube([y_JST+xxx,x_JST2-10-2,z_JST]); 
+  translate([x_PCB-x_JST3,y_PCB-y_JST,z_PCB])cube([x_JST3-10,y_JST+xxx,z_JST]);
 }
 
 module JST8(){
@@ -420,6 +414,28 @@ module Trimmer(){
         translate([x1_offsetTimmer,y1_offsetTimmer,-h_pinTimmer])cylinder(r=r_pinTrimmer,h=h_pinTimmer,$fn=Smoothness);
         translate([x2_offsetTimmer,y2_offsetTimmer,-h_pinTimmer])cylinder(r=r_pinTrimmer,h=h_pinTimmer,$fn=Smoothness);
         translate([x1_offsetTimmer,y3_offsetTimmer,-h_pinTimmer])cylinder(r=r_pinTrimmer,h=h_pinTimmer,$fn=Smoothness);
+    }
+}
+
+module Trimmers(){
+    for (i = [0:1:1]){
+        translate([x11_trim+i*10,y11_trim,z_PCB+hex_middle])Trimmer();
+    }
+    for (i = [0:1:7]){
+        translate([x12_trim+i*9.65,y11_trim,z_PCB+hex_middle])Trimmer();
+    }
+    for (i = [0:1:1]){
+        translate([x13_trim+i*10,y11_trim,z_PCB+hex_middle])Trimmer();
+    }
+
+    for (i = [0:1:1]){
+        translate([x31_trim+i*10,y31_trim,z_PCB+hex_middle])rotate([0,0,180])Trimmer();
+    }
+    for (i = [0:1:7]){
+        translate([x32_trim+i*9.65,y31_trim,z_PCB+hex_middle])rotate([0,0,180])Trimmer();
+    }
+    for (i = [0:1:1]){
+        translate([x33_trim+i*10,y31_trim,z_PCB+hex_middle])rotate([0,0,180])Trimmer();
     }
 }
 
@@ -525,10 +541,9 @@ module Acrylic_Front(){
             translate([xpos_Switch_1,ypos_Switch,0])Switch();
             translate([xpos_Switch_2,ypos_Switch,0])Switch();
             JST2();
-            for (i = [0:1:8]){
-                translate([x11_trim+i*8.6,y11_trim,z_PCB+hex_middle])Trimmer();
-            }
+            Trimmers();
             NeoPixelHole();
+            
             for (i = [0:2:6]){
                 translate([-x1margin_AcrylicFront-tol,-y1margin_AcrylicFront-Acrylic_Wall-tol,-hex_bottom+z_AcrylicSide*(i+1)/6])cube([Acrylic_Wall+2*tol,Acrylic_Wall+2*tol,z_AcrylicSide/6]);
                 translate([x_AcrylicFront+x2margin_AcrylicFront-Acrylic_Wall-tol,-y1margin_AcrylicFront-Acrylic_Wall-tol,-hex_bottom+z_AcrylicSide*(i+1)/6])cube([Acrylic_Wall+2*tol,Acrylic_Wall+2*tol,z_AcrylicSide/6]);
@@ -547,9 +562,9 @@ module Acrylic_Back(){
             translate([-x1margin_AcrylicFront,y_PCB+y2margin_AcrylicFront,-hex_bottom])cube([x_AcrylicFront+x1margin_AcrylicFront+x2margin_AcrylicFront,y_AcrylicFront,z_AcrylicFront]);
             translate([xoffset_pinPower1,yoffset_pinPower1,0])Power();
             JST2();
-            for (i = [0:1:6]){
-                translate([x31_trim+i*8.6,y31_trim,z_PCB+hex_middle])rotate([0,0,180])Trimmer();
-            }
+            Trimmers();
+            //PowerSwitch();
+            
             for (i = [0:2:6]){
                 translate([-x1margin_AcrylicFront-tol,y_PCB+y2margin_AcrylicFront-tol,-hex_bottom+z_AcrylicSide*(i+1)/6])cube([Acrylic_Wall+2*tol,Acrylic_Wall+2*tol,z_AcrylicSide/6]);
                 translate([x_AcrylicFront+x2margin_AcrylicFront-Acrylic_Wall-tol,y_PCB+y2margin_AcrylicFront-tol,-hex_bottom+z_AcrylicSide*(i+1)/6])cube([Acrylic_Wall+2*tol,Acrylic_Wall+2*tol,z_AcrylicSide/6]);
@@ -594,9 +609,6 @@ module Acrylic_Right(){
         difference(){
             translate([x_PCB+x2margin_AcrylicSide,-y1margin_AcrylicSide,-hex_bottom])cube([x_AcrylicSide,y_AcrylicSide+y1margin_AcrylicSide+y2margin_AcrylicSide,z_AcrylicSide]);
             JST2();
-            for (i = [0:1:7]){
-                translate([x23_trim,y21_trim+i*6.85,z_PCB+hex_middle])rotate([0,0,90])Trimmer();
-            }
         }
         difference(){
             translate([x_AcrylicFront+x2margin_AcrylicSide,-y1margin_AcrylicSide-Acrylic_Wall,-hex_bottom])cube([Acrylic_Wall,Acrylic_Wall,z_AcrylicSide]);
@@ -631,13 +643,13 @@ module Acrylic_Front_DXF(){
     projection()rotate([-90,0,0])Acrylic_Front();
 }
 module Acrylic_Back_DXF(){
-    projection()Acrylic_Back();
+    projection()rotate([90,0,0])Acrylic_Back();
 }
-module AcrylicLeft_DXF(){
-    projection()Acrylic_Left();
+module Acrylic_Left_DXF(){
+    projection()rotate([0,-90,0])Acrylic_Left();
 }
 module Acrylic_Right_DXF(){
-    projection()Acrylic_Right();
+    projection()rotate([0,90,0])Acrylic_Right();
 }
 
 
