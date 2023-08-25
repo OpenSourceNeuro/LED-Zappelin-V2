@@ -63,18 +63,18 @@ int LEDPower[] = {LED1_Power, LED2_Power, LED3_Power, LED4_Power, LED5_Power, LE
 /* -------------------------------- Neopixel HSV hue --------------------------------*/
 
 int bits = 65535;
-int hsv_hue1 = bits - 54612;
-int hsv_hue2 = bits - 54496;
-int hsv_hue3 = bits - 51713;
-int hsv_hue4 = bits - 50163;
-int hsv_hue5 = bits - 48514;
-int hsv_hue6 = bits - 35105;
-int hsv_hue7 = bits - 32942;
-int hsv_hue8 = bits - 17052;
-int hsv_hue9 = bits - 13903;
-int hsv_hue10 = bits - 12190;
-int hsv_hue11 = bits - 7701;
-int hsv_hue12 = bits - 3910;
+int hsv_hue1 = 10922;
+int hsv_hue2 = 11104;
+int hsv_hue3 = 13835;
+int hsv_hue4 = 16748;
+int hsv_hue5 = 18932;
+int hsv_hue6 = 29491;
+int hsv_hue7 = 32768;
+int hsv_hue8 = 46057;
+int hsv_hue9 = 48787;
+int hsv_hue10 = 52974;
+int hsv_hue11 = 59710;
+int hsv_hue12 = 62259;
 
 int hsv_hue_Array[] = {hsv_hue1, hsv_hue2, hsv_hue3, hsv_hue4, hsv_hue5, hsv_hue6, hsv_hue7, hsv_hue8, hsv_hue9, hsv_hue10, hsv_hue11, hsv_hue12};
 

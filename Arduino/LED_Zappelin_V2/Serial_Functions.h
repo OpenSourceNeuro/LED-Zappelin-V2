@@ -17,6 +17,33 @@ void LED_Off(){
 
 /* ----------------------------------------------------------------------------------*/
 /* ----------------------- Inititate new stimulation sequence -----------------------*/
+void SetTrigger(){
+    arg = SCmd.next();
+    if (arg != NULL){
+      aNumber = atoi(arg);
+      TriggerMode = aNumber;
+    }
+
+    if (TriggerMode == 0){
+      TriggerrModeFlag = false;
+    }
+
+    if (TriggerMode > 0){
+      TriggerrModeFlag = true;
+
+      int TriggerArray[TriggerMode];
+      for (int trig = 0; trig <= TriggerMode-1; trig++){
+        if (arg != NULL){
+        aNumber = atoi(arg);
+        TriggerArray[trig] = aNumber;
+        }
+      }
+    }
+    tr = 0;
+    TriggerTime = TriggerArray[tr] / ResolutionMicros;
+    TriggerDuration = TriggerDur / ResolutionMicros;    
+}
+
 void SetStimulus(){
     i = 1;
     t = 0;
@@ -32,9 +59,6 @@ void SetStimulus(){
       aNumber = atoi(arg);
       iLoop = aNumber;
     }
-
-    TriggerTime = 1000 / (ResolutionMicros/1000);
-    TriggerDuration = TriggerDur / (ResolutionMicros/1000);
 
     digitalWrite(Trigger, HIGH);
     TriggerFlag = true;  
@@ -253,6 +277,22 @@ void LED12(){
     }
 }
 
+
+/* ----------------------------------------------------------------------------------*/
+/* --------------------------- Set Proxy LEDs brightness ----------------------------*/
+void Brightness(){
+  int aNumber;
+  char *arg;
+  
+  arg = SCmd.next();
+    if (arg != NULL){
+      aNumber = atoi(arg);
+      brightness = aNumber;
+    }
+  strip.setBrightness(brightness); // Set NeoPixel brightness 
+}
+
+
 /* ----------------------------------------------------------------------------------*/
 /* ------------------------------- Set NeoPixel LEDs --------------------------------*/
 void SetNeoPixelColours(){
@@ -272,6 +312,7 @@ void SCmdAddCommand(){
   SCmd.addCommand("P2", Stimulus2);
   SCmd.addCommand("P3", Stimulus3);
   SCmd.addCommand("S", SetStimulus);
+  SCmd.addCommand("T", SetTrigger);
   SCmd.addCommand("O", StopStimulus);
   SCmd.addCommand("L1", LED01);
   SCmd.addCommand("L2", LED02);
@@ -285,6 +326,7 @@ void SCmdAddCommand(){
   SCmd.addCommand("L10", LED10);
   SCmd.addCommand("L11", LED11);
   SCmd.addCommand("L12", LED12);
+  SCmd.addCommand("B", Brightness);
 
 
 }

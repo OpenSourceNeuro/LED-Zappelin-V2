@@ -31,7 +31,7 @@ void loop() {
         td += 1;
       }
 
-      if (t >= TriggerTime) {
+      if (TriggerrModeFlagt >= TriggerTime) {
         t = 0;
         TriggerFlag = true;
         digitalWrite(Trigger, HIGH);

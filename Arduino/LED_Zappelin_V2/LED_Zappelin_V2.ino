@@ -31,7 +31,12 @@ void loop() {
         td += 1;
       }
 
-      if (t >= TriggerTime) {
+      if (TriggerModeFlag == true && t >= TriggerTime) {
+        tr +=1;
+        TriggerTime = TriggerArray[tr];
+        if (tr >= sizeof(TriggerArray)){
+          tr = 0;
+        }
         t = 0;
         TriggerFlag = true;
         digitalWrite(Trigger, HIGH);

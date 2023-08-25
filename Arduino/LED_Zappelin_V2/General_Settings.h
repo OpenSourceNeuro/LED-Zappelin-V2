@@ -40,12 +40,15 @@ int            CurrentMicros;               // Current Microsecond clock
 int            PreviousMicros;              // Microsecond clock stamp
 int            DiffMicros;                  // Difference in microseconds between the clock and the stamp
 int            ResolutionMicros;            // Microseconds delay between two i iteration
+boolean        TriggerrModeFlag;
+int            TriggerMode;                 // Set the Trigger mode
 
 int            t;                           // Trigger counter
 int            td;                          // Trigger Pulse counter
+int            tr;                          // TriggerTime array counter
 boolean        TriggerFlag = false;         // Trigger Flag
 int            TriggerTime;                 // Lenght of the Trigger loop in ms 
-int            TriggerDur = 25;             // Length of the Trigger signal in ms 
+int            TriggerDur = 25000;          // Length of the Trigger signal in us 
 int            TriggerDuration;
 
 int            brightness    = 100;         // NeoPixel brightness (max = 255)
