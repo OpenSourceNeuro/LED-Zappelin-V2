@@ -181,10 +181,12 @@ def PlayStimuli(self):
                 self.Stim.append(self.ui.Chrolis_Df[i])
 
             self.df_StimRes = Df["Resolution"]
-            self.df_nLoop = Df["nLoop"]
+            self.df_nLoop = Df["nEntries"]
+            self.df_Trigger = Df["Trigger"]
 
             self.Stim.append(self.df_StimRes)
             self.Stim.append(self.df_nLoop)
+            self.Stim.append(self.df_Trigger)
 
             return self.Stim
 
@@ -196,6 +198,18 @@ def PlayStimuli(self):
 
 
     def SetStimulus(self):
+        self.TriggerMode = self.Stim[14][0]
+        if self.TriggerMode == 0:
+            self.serial_port.write(str('T' + str(self.Stim[14][0]) + '\n').encode('utf-8'))
+        elif self.TriggerMode > 0:
+            self.TriggerString = ""
+            for i in range(self.TriggerMode):
+                self.TriggerString += str(self.Stim[14][i+1]) + ' '
+            self.serial_port.write(str('T' + str(self.Stim[14][0])
+                                       + self.TriggerString
+                                       + '\n').encode('utf-8'))
+
+
         self.serial_port.write(str('S ' + str(self.Stim[12][0]) + ' '
                                    + str(self.Stim[13][0]) + ' '
                                    + '\n').encode('utf-8'))
@@ -350,4 +364,25 @@ class Chrolis_Stimuli():
             self.ui.Chrolis_Brush[i][2] = self.ui.Chrolis_RGB[i][2]
             self.ui.Chrolis_Brush[i][3] = self.transparency*2
 
+
+def ChrolisLoadPreSet(self):
+    FileName, _ = QFileDialog.getOpenFileName(self,
+                                           caption='Select a LED settings file',
+                                           dir="./LED_Settings",
+                                           filter='csv files (*.csv)'
+                                           )
+    self.filename = os.path.realpath(os.path.basename(QFileInfo(FileName).fileName()))
+    self.ui.Chrolis_Preselect_Label.setText(self.filename)
+
+
+def SetChrolisBrightness(self):
+    self.ProxyLED_value = self.ui.Chrolis_ProxyLED_Slider.value()
+
+    self.ProxyLED_Value = int(self.ProxyLED_value / 255 * 100)
+    self.ui.Chrolis_ProxyLED_value.setText(str(self.ProxyLED_Value) + ' %')
+    self.ui.Chrolis_Zap_Serial_label.setText('Proxy LED brightness changed to ' + str(self.ProxyLED_Value) + '%')
+
+
+    self.serial_port.write(str('B ' + str(self.ProxyLED_value)
+                               + '\n').encode('utf-8'))
 

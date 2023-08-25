@@ -169,6 +169,10 @@ class MainWindow(QMainWindow):
         self.ui.LED_Zap_Display1_pushButton.clicked.connect(lambda: self.ui.LED_Zap_Display_stackedWidget.setCurrentWidget(self.ui.LED_Zap_Display_page2))
         self.ui.LED_Zap_Display2_pushButton.clicked.connect(lambda: self.ui.LED_Zap_Display_stackedWidget.setCurrentWidget(self.ui.LED_Zap_Display_page1))
 
+        # Load LED Settings
+        self.ui.Preselect_Load_frame_pushButton.clicked.connect(lambda: Page101.LoadPreSet(self))
+
+
         # LED toggle buttons
         self.ui.All_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateAllLED(self))
         self.ui.LED01_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateLED(self, 0))
@@ -183,6 +187,9 @@ class MainWindow(QMainWindow):
         self.ui.LED10_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateLED(self, 9))
         self.ui.LED11_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateLED(self, 10))
         self.ui.LED12_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateLED(self, 11))
+
+        # Proxy LED slider
+        self.ui.LEDZap_ProxyLED_Slider.valueChanged.connect(lambda: Page101.SetBrightness(self))
 
 
         ########################################################################
@@ -232,6 +239,9 @@ class MainWindow(QMainWindow):
         self.ui.Chrolis_Display1_pushButton.clicked.connect(lambda: self.ui.Chrolis_Display_stackedWidget.setCurrentWidget(self.ui.Chrolis_Display_page2))
         self.ui.Chrolis_Display2_pushButton.clicked.connect(lambda: self.ui.Chrolis_Display_stackedWidget.setCurrentWidget(self.ui.Chrolis_Display_page1))
 
+        # Load LED Settings
+        self.ui.Chrolis_Preselect_Load_frame_pushButton.clicked.connect(lambda: Page201.ChrolisLoadPreSet(self))
+
         # LED toggle buttons
         self.ui.ChrolisAll_toggleButton.toggled.connect(lambda: Page201.Chrolis.DeactivateAllLED(self))
         self.ui.Chrolis01_toggleButton.toggled.connect(lambda: Page201.Chrolis.DeactivateLED(self, 0))
@@ -246,6 +256,9 @@ class MainWindow(QMainWindow):
         self.ui.Chrolis10_toggleButton.toggled.connect(lambda: Page201.Chrolis.DeactivateLED(self, 9))
         self.ui.Chrolis11_toggleButton.toggled.connect(lambda: Page201.Chrolis.DeactivateLED(self, 10))
         self.ui.Chrolis12_toggleButton.toggled.connect(lambda: Page201.Chrolis.DeactivateLED(self, 11))
+
+        # Proxy LED slider
+        self.ui.Chrolis_ProxyLED_Slider.valueChanged.connect(lambda: Page201.SetChrolisBrightness(self))
 
         ########################################################################
         # Spectra Page - page401

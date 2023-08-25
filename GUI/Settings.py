@@ -98,6 +98,10 @@ def LEDZapSetup(self):
                                           )
     self.ui.LED12_toggleButton_layout.addWidget(self.ui.LED12_toggleButton)
 
+    self.ProxyLED_value = self.ui.LEDZap_ProxyLED_Slider.value()
+    self.ProxyLED_Value = int(self.ProxyLED_value / 255 * 100)
+    self.ui.LEDZap_ProxyLED_value.setText(str(self.ProxyLED_Value) + ' %')
+
     self.ui.LED01_toggleButton.setChecked(True)
     self.LED01_Val = self.ui.LED01_Slider.value()
     self.ui.LED01_Value.setText(str(self.LED01_Val) + ' %')
@@ -135,41 +139,41 @@ def LEDZapSetup(self):
     self.ui.All_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateAllLED(self))
     self.ui.All_LED_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetAllLED(self))
 
-    self.ui.LED01_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,1))
-    self.ui.LED01_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,1))
+    self.ui.LED01_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,0))
+    self.ui.LED01_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,0))
 
-    self.ui.LED02_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,2))
-    self.ui.LED02_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,2))
+    self.ui.LED02_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,1))
+    self.ui.LED02_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,1))
 
-    self.ui.LED03_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,3))
-    self.ui.LED03_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,3))
+    self.ui.LED03_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,2))
+    self.ui.LED03_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,2))
 
-    self.ui.LED04_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,4))
-    self.ui.LED04_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,4))
+    self.ui.LED04_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,3))
+    self.ui.LED04_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,3))
 
-    self.ui.LED05_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,5))
-    self.ui.LED05_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,5))
+    self.ui.LED05_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,4))
+    self.ui.LED05_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,4))
 
-    self.ui.LED06_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,6))
-    self.ui.LED06_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,6))
+    self.ui.LED06_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,5))
+    self.ui.LED06_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,5))
 
-    self.ui.LED07_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,7))
-    self.ui.LED07_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,7))
+    self.ui.LED07_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,6))
+    self.ui.LED07_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,6))
 
-    self.ui.LED08_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,8))
-    self.ui.LED08_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,8))
+    self.ui.LED08_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,7))
+    self.ui.LED08_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,7))
 
-    self.ui.LED09_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,9))
-    self.ui.LED09_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,9))
+    self.ui.LED09_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,8))
+    self.ui.LED09_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,8))
 
-    self.ui.LED10_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,10))
-    self.ui.LED10_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,10))
+    self.ui.LED10_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,9))
+    self.ui.LED10_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,9))
 
-    self.ui.LED11_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,11))
-    self.ui.LED11_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,11))
+    self.ui.LED11_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,10))
+    self.ui.LED11_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,10))
 
-    self.ui.LED12_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,12))
-    self.ui.LED12_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,12))
+    self.ui.LED12_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,11))
+    self.ui.LED12_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,11))
 
     self.ui.All_LED_Slider.setEnabled(False)
     self.ui.All_LED_Slider.setValue(0)
@@ -258,6 +262,10 @@ def ChrolisSetup(self):
                                               )
     self.ui.Chrolis12_toggleButton_layout.addWidget(self.ui.Chrolis12_toggleButton)
 
+
+    self.ProxyLED_value = self.ui.Chrolis_ProxyLED_Slider.value()
+    self.ProxyLED_Value = int(self.ProxyLED_value / 255 * 100)
+    self.ui.Chrolis_ProxyLED_value.setText(str(self.ProxyLED_Value) + ' %')
 
 
     self.ui.Chrolis01_toggleButton.setChecked(True)
