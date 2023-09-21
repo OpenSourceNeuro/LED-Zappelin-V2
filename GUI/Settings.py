@@ -84,7 +84,7 @@ def LEDZapSetup(self):
                                           circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
                                           active_color='#%02x%02x%02x' % tuple(self.ui.LEDZap_RGB[9])
                                           )
-    self.ui.LED010_toggleButton_layout.addWidget(self.ui.LED10_toggleButton)
+    self.ui.LED10_toggleButton_layout.addWidget(self.ui.LED10_toggleButton)
 
     self.ui.LED11_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
                                           circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),

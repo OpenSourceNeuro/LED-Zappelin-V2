@@ -9,6 +9,7 @@ import pyqtgraph as pg
 from Settings import *
 from Colours import *
 from Arrays import *
+from py_toggle import PyToggle
 
 import serial
 import os
@@ -100,6 +101,11 @@ class LED_Zappelin():
                 self.ui.LEDZap_LED_Slider[i].setEnabled(False)
                 self.ui.LEDZap_LED_Value[i].setText('')
 
+            if self.serial_port.is_open:
+                pass
+            else:
+                self.ui.Chrolis_Serial_label.setText(
+                    'LED Zappelin is not connected: LED value change will not be applied')
 
     def ActivateLED(self,i):
         if self.ui.LEDZap_LED_toggleButton[i].isChecked():
@@ -146,14 +152,12 @@ class LED_Zappelin():
 
 
     def DeactivateLED(self,i):
-
         if self.ui.LEDZap_LED_toggleButton[i].isChecked() == False:
             self.ui.LEDZap_LED_Slider[i].setValue(0)
             self.ui.LEDZap_LED_Value[i].setText('Off')
 
 
     def DeactivateAllLED(self):
-
         if self.ui.All_toggleButton.isChecked() == False:
             for i in range(self.ui.LEDZap_nLED + 1):
                 self.ui.LEDZap_LED_Slider[i].setValue(0)
@@ -175,11 +179,11 @@ def PlayStimuli(self):
                 self.Stim.append(self.ui.LEDZap_Df[i])
 
             self.df_StimRes = Df["Resolution"]
-            self.df_nLoop = Df["nEntries"]
+            self.df_nEntries = Df["nEntries"]
             self.df_Trigger = Df["Trigger"]
 
             self.Stim.append(self.df_StimRes)
-            self.Stim.append(self.df_nLoop)
+            self.Stim.append(self.df_nEntries)
             self.Stim.append(self.df_Trigger)
 
             return self.Stim
@@ -190,32 +194,48 @@ def PlayStimuli(self):
     self.Stim = ReadStimulus(self)
 
 
+    def SetTriggerMode(self):
+        self.TriggerMode = int(self.Stim[14][0])
+
+        if self.TriggerMode == 0:
+            self.serial_port.write(str('M ' + str(self.TriggerMode) + '\n').encode('utf-8'))
+
+        elif self.TriggerMode > 0:
+            self.serial_port.write(str('M ' + str(self.TriggerMode) + '\n').encode('utf-8'))
+
+
+    def SetTrigger(self):
+        self.TriggerMode = int(self.Stim[14][0])
+
+        if self.TriggerMode > 0:
+            self.TriggerString = ""
+            for i in range(self.TriggerMode):
+                self.TriggerString += ' ' + str(int(self.Stim[14][i+1]))
+            self.serial_port.write(str('T' + self.TriggerString + '\n').encode('utf-8'))
+        elif self.TriggerMode == 0:
+            pass
+
+
 
 
     def SetStimulus(self):
-        self.TriggerMode = self.Stim[14][0]
-        if self.TriggerMode == 0:
-            self.serial_port.write(str('T' + str(self.Stim[14][0]) + '\n').encode('utf-8'))
-        elif self.TriggerMode > 0:
-            self.TriggerString = ""
-            for i in range(self.TriggerMode):
-                self.TriggerString += str(self.Stim[14][i+1]) + ' '
-            self.serial_port.write(str('T' + str(self.Stim[14][0])
-                                       + self.TriggerString
-                                       + '\n').encode('utf-8'))
-
         self.serial_port.write(str('S ' + str(self.Stim[12][0]) + ' '
                                    + str(self.Stim[13][0]) + ' '
                                    + '\n').encode('utf-8'))
+
         for i in range (self.ui.LEDZap_nLED):
             LED_Zappelin.GetLED(self,i)
 
     if self.ui.LEDZap_StimulusFlag:
+        SetTriggerMode(self)
+        SetTrigger(self)
         SetStimulus(self)
         self.ui.LEDZap_PlayingFlag = True
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(lambda: PlayStimulus(self))
         self.timer.start()
+
+
 
     def PlayStimulus(self):
         if self.ui.LEDZap_StimulusFlag == True:
@@ -267,13 +287,12 @@ def PlayStimuli(self):
 
 def LoadStimulus(self):
     self.ui.LEDZap_StimulusFlag = True
-    FileName, _ = QFileDialog.getOpenFileName(self,
+    self.FileName, _ = QFileDialog.getOpenFileName(self,
                                            caption='Select a stimulus',
                                            dir="./Stimuli",
                                            filter='csv files (*.csv)'
                                            )
-    self.filename = os.path.realpath(os.path.basename(QFileInfo(FileName).fileName()))
-    self.ui.LEDZap_Stimulus_Label.setText(self.filename)
+    self.ui.LEDZap_Stimulus_Label.setText(self.FileName)
 
 
 
@@ -282,6 +301,7 @@ def StopStimulus(self):
         self.ui.LEDZap_StartStimulusFlag = False
         self.ui.LEDZap_Start_pushButton.setStyleSheet("color: rgb(147, 161, 161);\n"
                                                     "background-color: rgb(7, 54, 66);")
+
         self.serial_port.write(('O ' + '\n').encode('utf-8'))
         self.ui.LED_Zap_Serial_label.setText('Stimulus stopped')
 
@@ -309,8 +329,8 @@ class LEDZap_Stimuli():
         self.FileName = self.ui.LEDZap_Stimulus_Label.text()
         self.Df = pd.read_csv(self.FileName)
         self.Resolution = self.Df["Resolution"][0] / 1000
-        self.nLoop = self.Df["nLoop"][0]
-        self.xStim = np.linspace(0,int(self.nLoop)*int(self.Resolution),int(self.nLoop))
+        self.nEntries = self.Df["nEntries"][0]
+        self.xStim = np.linspace(0,int(self.nEntries)*int(self.Resolution),int(self.nEntries))
 
 
         for i in range(self.ui.LEDZap_nLED):
@@ -356,13 +376,30 @@ class LEDZap_Stimuli():
             self.ui.LEDZap_Brush[i][3] = self.transparency*2
 
 def LoadPreSet(self):
-    FileName, _ = QFileDialog.getOpenFileName(self,
+    self.FileName, _ = QFileDialog.getOpenFileName(self,
                                            caption='Select a LED settings file',
                                            dir="./LED_Settings",
                                            filter='csv files (*.csv)'
                                            )
-    self.filename = os.path.realpath(os.path.basename(QFileInfo(FileName).fileName()))
-    self.ui.Preselect_Label.setText(self.filename)
+    self.ui.Preselect_Label.setText(self.FileName)
+
+def ApplyPreSet(self):
+    self.FileName = self.ui.Preselect_Label.text()
+    self.Df_PreSelect = pd.read_csv(self.FileName)
+    self.ui.LED01_Slider.setValue(self.Df_PreSelect["LED01"][0])
+    self.ui.LED02_Slider.setValue(self.Df_PreSelect["LED02"][0])
+    self.ui.LED03_Slider.setValue(self.Df_PreSelect["LED03"][0])
+    self.ui.LED04_Slider.setValue(self.Df_PreSelect["LED04"][0])
+    self.ui.LED05_Slider.setValue(self.Df_PreSelect["LED05"][0])
+    self.ui.LED06_Slider.setValue(self.Df_PreSelect["LED06"][0])
+    self.ui.LED07_Slider.setValue(self.Df_PreSelect["LED07"][0])
+    self.ui.LED08_Slider.setValue(self.Df_PreSelect["LED08"][0])
+    self.ui.LED09_Slider.setValue(self.Df_PreSelect["LED09"][0])
+    self.ui.LED10_Slider.setValue(self.Df_PreSelect["LED10"][0])
+    self.ui.LED11_Slider.setValue(self.Df_PreSelect["LED11"][0])
+    self.ui.LED12_Slider.setValue(self.Df_PreSelect["LED12"][0])
+
+
 
 
 def SetBrightness(self):
@@ -375,4 +412,30 @@ def SetBrightness(self):
 
     self.serial_port.write(str('B ' + str(self.ProxyLED_value)
                                + '\n').encode('utf-8'))
+
+def ChangeToggleButton(self,i):
+
+
+    self.wavelength = self.ui.LED_Display_lineEdit[i].text()
+    self.RGB = Wavelength_to_RGB(self, self.wavelength, 0.8)
+
+    self.ui.LEDZap_LED_toggleButton[i] = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
+                                                  circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
+                                                  active_color='#%02x%02x%02x' % tuple(self.RGB)
+                                                  )
+    self.ui.LEDZap_LED_toggleButton[i].setChecked(True)
+    #print(self.ui.LEDZap_LED_toggleButton[i].objectName())
+    self.ui.LED_toggleButton_layout[i].removeItem(self.ui.LED_toggleButton_layout[i].itemAt(2))
+    self.ui.LED_toggleButton_layout[i].addWidget(self.ui.LEDZap_LED_toggleButton[i])
+    #print(self.ui.LEDZap_LED_toggleButton[i])
+
+    self.ui.LEDZap_LED_toggleButton[i] = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
+                                                  circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
+                                                  active_color='#%02x%02x%02x' % tuple(self.RGB)
+                                                  )
+
+    self.ui.LEDZap_LED_toggleButton[i].setChecked(True)
+    self.ui.LEDZap_LED_Slider[i].setEnabled(True)
+    self.ui.LEDZap_LED_Slider[i].setValue(100)
+
 

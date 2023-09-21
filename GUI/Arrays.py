@@ -51,6 +51,34 @@ def LEDZap_Arrays(self):
                                 self.ui.LED12_Value,
                                 self.ui.All_LED_value
                                 ]
+    self.ui.LED_Display_lineEdit = [self.ui.LED01_Display_lineEdit,
+                                    self.ui.LED02_Display_lineEdit,
+                                    self.ui.LED03_Display_lineEdit,
+                                    self.ui.LED04_Display_lineEdit,
+                                    self.ui.LED05_Display_lineEdit,
+                                    self.ui.LED06_Display_lineEdit,
+                                    self.ui.LED07_Display_lineEdit,
+                                    self.ui.LED08_Display_lineEdit,
+                                    self.ui.LED09_Display_lineEdit,
+                                    self.ui.LED10_Display_lineEdit,
+                                    self.ui.LED11_Display_lineEdit,
+                                    self.ui.LED12_Display_lineEdit
+                                    ]
+
+    self.ui.LED_toggleButton_layout = [self.ui.LED01_toggleButton_layout,
+                                       self.ui.LED02_toggleButton_layout,
+                                       self.ui.LED03_toggleButton_layout,
+                                       self.ui.LED04_toggleButton_layout,
+                                       self.ui.LED05_toggleButton_layout,
+                                       self.ui.LED06_toggleButton_layout,
+                                       self.ui.LED07_toggleButton_layout,
+                                       self.ui.LED08_toggleButton_layout,
+                                       self.ui.LED09_toggleButton_layout,
+                                       self.ui.LED10_toggleButton_layout,
+                                       self.ui.LED11_toggleButton_layout,
+                                       self.ui.LED12_toggleButton_layout
+                                       ]
+
 
     self.ui.LEDZap_Dataframe = ["LED01",
                                  "LED02",

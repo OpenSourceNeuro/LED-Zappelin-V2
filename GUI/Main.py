@@ -171,6 +171,8 @@ class MainWindow(QMainWindow):
 
         # Load LED Settings
         self.ui.Preselect_Load_frame_pushButton.clicked.connect(lambda: Page101.LoadPreSet(self))
+        # Apply LED Settings
+        self.ui.Preselect_Apply_pushButton.clicked.connect(lambda: Page101.ApplyPreSet(self))
 
 
         # LED toggle buttons
@@ -187,6 +189,19 @@ class MainWindow(QMainWindow):
         self.ui.LED10_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateLED(self, 9))
         self.ui.LED11_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateLED(self, 10))
         self.ui.LED12_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateLED(self, 11))
+
+        self.ui.LED01_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 0))
+        self.ui.LED02_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 1))
+        self.ui.LED03_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 2))
+        self.ui.LED04_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 3))
+        self.ui.LED05_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 4))
+        self.ui.LED06_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 5))
+        self.ui.LED07_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 6))
+        self.ui.LED08_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 7))
+        self.ui.LED09_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 8))
+        self.ui.LED10_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 9))
+        self.ui.LED11_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 10))
+        self.ui.LED12_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 11))
 
         # Proxy LED slider
         self.ui.LEDZap_ProxyLED_Slider.valueChanged.connect(lambda: Page101.SetBrightness(self))
@@ -241,6 +256,8 @@ class MainWindow(QMainWindow):
 
         # Load LED Settings
         self.ui.Chrolis_Preselect_Load_frame_pushButton.clicked.connect(lambda: Page201.ChrolisLoadPreSet(self))
+        # Apply LED Settings
+        self.ui.Chrolis_Preselect_Apply_pushButton.clicked.connect(lambda: Page201.ChrolisApplyPreSet(self))
 
         # LED toggle buttons
         self.ui.ChrolisAll_toggleButton.toggled.connect(lambda: Page201.Chrolis.DeactivateAllLED(self))

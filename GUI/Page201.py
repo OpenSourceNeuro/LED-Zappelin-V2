@@ -181,11 +181,11 @@ def PlayStimuli(self):
                 self.Stim.append(self.ui.Chrolis_Df[i])
 
             self.df_StimRes = Df["Resolution"]
-            self.df_nLoop = Df["nEntries"]
+            self.df_nEntries = Df["nEntries"]
             self.df_Trigger = Df["Trigger"]
 
             self.Stim.append(self.df_StimRes)
-            self.Stim.append(self.df_nLoop)
+            self.Stim.append(self.df_nEntries)
             self.Stim.append(self.df_Trigger)
 
             return self.Stim
@@ -197,19 +197,29 @@ def PlayStimuli(self):
 
 
 
-    def SetStimulus(self):
-        self.TriggerMode = self.Stim[14][0]
+    def SetTriggerMode(self):
+        self.TriggerMode = int(self.Stim[14][0])
+
         if self.TriggerMode == 0:
-            self.serial_port.write(str('T' + str(self.Stim[14][0]) + '\n').encode('utf-8'))
+            self.serial_port.write(str('M ' + str(self.TriggerMode) + '\n').encode('utf-8'))
+
         elif self.TriggerMode > 0:
+            self.serial_port.write(str('M ' + str(self.TriggerMode) + '\n').encode('utf-8'))
+
+
+    def SetTrigger(self):
+        self.TriggerMode = int(self.Stim[14][0])
+
+        if self.TriggerMode > 0:
             self.TriggerString = ""
             for i in range(self.TriggerMode):
-                self.TriggerString += str(self.Stim[14][i+1]) + ' '
-            self.serial_port.write(str('T' + str(self.Stim[14][0])
-                                       + self.TriggerString
-                                       + '\n').encode('utf-8'))
+                self.TriggerString += ' ' + str(int(self.Stim[14][i+1]))
+            self.serial_port.write(str('T' + self.TriggerString + '\n').encode('utf-8'))
+        elif self.TriggerMode == 0:
+            pass
 
 
+    def SetStimulus(self):
         self.serial_port.write(str('S ' + str(self.Stim[12][0]) + ' '
                                    + str(self.Stim[13][0]) + ' '
                                    + '\n').encode('utf-8'))
@@ -218,11 +228,14 @@ def PlayStimuli(self):
             Chrolis.GetChrolis(self,i)
 
     if self.ui.Chrolis_StimulusFlag:
+        SetTriggerMode(self)
+        SetTrigger(self)
         SetStimulus(self)
         self.ui.Chrolis_PlayingFlag = True
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(lambda: PlayStimulus(self))
         self.timer.start()
+
 
     def PlayStimulus(self):
         if self.ui.Chrolis_StimulusFlag == True:
@@ -272,13 +285,13 @@ def PlayStimuli(self):
 
 def LoadStimulus(self):
     self.ui.Chrolis_StimulusFlag = True
-    FileName, _ = QFileDialog.getOpenFileName(self,
+    self.FileName, _ = QFileDialog.getOpenFileName(self,
                                            caption='Select a stimulus',
                                            dir="./Stimuli",
                                            filter='csv files (*.csv)'
                                            )
-    self.filename = os.path.realpath(os.path.basename(QFileInfo(FileName).fileName()))
-    self.ui.Chrolis_Stimulus_Label.setText(self.filename)
+
+    self.ui.Chrolis_Stimulus_Label.setText(self.FileName)
 
 
 
@@ -315,8 +328,8 @@ class Chrolis_Stimuli():
             self.FileName = self.ui.Chrolis_Stimulus_Label.text()
             self.Df = pd.read_csv(self.FileName)
             self.Resolution = self.Df["Resolution"][0] / 1000
-            self.nLoop = self.Df["nLoop"][0]
-            self.xStim = np.linspace(0,int(self.nLoop)*int(self.Resolution),int(self.nLoop))
+            self.nEntries = self.Df["nEntries"][0]
+            self.xStim = np.linspace(0,int(self.nEntries)*int(self.Resolution),int(self.nEntries))
 
 
             for i in range(self.ui.Chrolis_nLED):
@@ -366,13 +379,29 @@ class Chrolis_Stimuli():
 
 
 def ChrolisLoadPreSet(self):
-    FileName, _ = QFileDialog.getOpenFileName(self,
+    self.FileName, _ = QFileDialog.getOpenFileName(self,
                                            caption='Select a LED settings file',
                                            dir="./LED_Settings",
                                            filter='csv files (*.csv)'
                                            )
-    self.filename = os.path.realpath(os.path.basename(QFileInfo(FileName).fileName()))
-    self.ui.Chrolis_Preselect_Label.setText(self.filename)
+    self.ui.Chrolis_Preselect_Label.setText(self.FileName)
+
+def ChrolisApplyPreSet(self):
+    self.FileName = self.ui.Chrolis_Preselect_Label.text()
+    self.Df_PreSelect = pd.read_csv(self.FileName)
+    self.ui.Chrolis01_Slider.setValue(self.Df_PreSelect["LED01"][0])
+    self.ui.Chrolis02_Slider.setValue(self.Df_PreSelect["LED02"][0])
+    self.ui.Chrolis03_Slider.setValue(self.Df_PreSelect["LED03"][0])
+    self.ui.Chrolis04_Slider.setValue(self.Df_PreSelect["LED04"][0])
+    self.ui.Chrolis05_Slider.setValue(self.Df_PreSelect["LED05"][0])
+    self.ui.Chrolis06_Slider.setValue(self.Df_PreSelect["LED06"][0])
+    self.ui.Chrolis07_Slider.setValue(self.Df_PreSelect["LED07"][0])
+    self.ui.Chrolis08_Slider.setValue(self.Df_PreSelect["LED08"][0])
+    self.ui.Chrolis09_Slider.setValue(self.Df_PreSelect["LED09"][0])
+    self.ui.Chrolis10_Slider.setValue(self.Df_PreSelect["LED10"][0])
+    self.ui.Chrolis11_Slider.setValue(self.Df_PreSelect["LED11"][0])
+    self.ui.Chrolis12_Slider.setValue(self.Df_PreSelect["LED12"][0])
+
 
 
 def SetChrolisBrightness(self):
@@ -380,7 +409,7 @@ def SetChrolisBrightness(self):
 
     self.ProxyLED_Value = int(self.ProxyLED_value / 255 * 100)
     self.ui.Chrolis_ProxyLED_value.setText(str(self.ProxyLED_Value) + ' %')
-    self.ui.Chrolis_Zap_Serial_label.setText('Proxy LED brightness changed to ' + str(self.ProxyLED_Value) + '%')
+    self.ui.Chrolis_Serial_label.setText('Proxy LED brightness changed to ' + str(self.ProxyLED_Value) + '%')
 
 
     self.serial_port.write(str('B ' + str(self.ProxyLED_value)

@@ -16,9 +16,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QHBoxLayout,
-    QLabel, QMainWindow, QPushButton, QSizePolicy,
-    QSlider, QSpacerItem, QStackedWidget, QVBoxLayout,
-    QWidget)
+    QLabel, QLineEdit, QMainWindow, QPushButton,
+    QSizePolicy, QSlider, QSpacerItem, QStackedWidget,
+    QVBoxLayout, QWidget)
 
 from pyqtgraph import PlotWidget
 import resources_rc
@@ -32,7 +32,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1258, 760)
+        MainWindow.resize(1280, 760)
         MainWindow.setMinimumSize(QSize(20, 20))
         MainWindow.setStyleSheet(u"/* --- General Settings --- */\n"
 "*{\n"
@@ -601,6 +601,10 @@ class Ui_MainWindow(object):
         self.Home_Main_Illustration_Image = QLabel(self.Home_Main_Illustration_Image_frame)
         self.Home_Main_Illustration_Image.setObjectName(u"Home_Main_Illustration_Image")
         self.Home_Main_Illustration_Image.setMaximumSize(QSize(500, 350))
+        self.Home_Main_Illustration_Image.setStyleSheet(u"")
+        self.Home_Main_Illustration_Image.setFrameShape(QFrame.NoFrame)
+        self.Home_Main_Illustration_Image.setFrameShadow(QFrame.Plain)
+        self.Home_Main_Illustration_Image.setLineWidth(1)
         self.Home_Main_Illustration_Image.setPixmap(QPixmap(u":/resources/resources/DarkSideOfTheRetina.png"))
         self.Home_Main_Illustration_Image.setScaledContents(True)
 
@@ -1186,6 +1190,12 @@ class Ui_MainWindow(object):
         self.LED01_toggleButton_layout.setSpacing(0)
         self.LED01_toggleButton_layout.setObjectName(u"LED01_toggleButton_layout")
         self.LED01_toggleButton_layout.setContentsMargins(0, 0, 5, 0)
+        self.LED01_Display_lineEdit = QLineEdit(self.LED01_Display_frame)
+        self.LED01_Display_lineEdit.setObjectName(u"LED01_Display_lineEdit")
+        self.LED01_Display_lineEdit.setMaximumSize(QSize(30, 16777215))
+
+        self.LED01_toggleButton_layout.addWidget(self.LED01_Display_lineEdit)
+
         self.LED01_Display_label = QLabel(self.LED01_Display_frame)
         self.LED01_Display_label.setObjectName(u"LED01_Display_label")
         self.LED01_Display_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
@@ -1255,6 +1265,12 @@ class Ui_MainWindow(object):
         self.LED02_toggleButton_layout.setSpacing(0)
         self.LED02_toggleButton_layout.setObjectName(u"LED02_toggleButton_layout")
         self.LED02_toggleButton_layout.setContentsMargins(0, 0, 5, 0)
+        self.LED02_Display_lineEdit = QLineEdit(self.LED02_Display_frame)
+        self.LED02_Display_lineEdit.setObjectName(u"LED02_Display_lineEdit")
+        self.LED02_Display_lineEdit.setMaximumSize(QSize(30, 16777215))
+
+        self.LED02_toggleButton_layout.addWidget(self.LED02_Display_lineEdit)
+
         self.LED02_Display_label = QLabel(self.LED02_Display_frame)
         self.LED02_Display_label.setObjectName(u"LED02_Display_label")
         self.LED02_Display_label.setMaximumSize(QSize(16777215, 16777215))
@@ -1326,6 +1342,12 @@ class Ui_MainWindow(object):
         self.LED03_toggleButton_layout.setSpacing(0)
         self.LED03_toggleButton_layout.setObjectName(u"LED03_toggleButton_layout")
         self.LED03_toggleButton_layout.setContentsMargins(0, 0, 5, 0)
+        self.LED03_Display_lineEdit = QLineEdit(self.LED03_Display_frame)
+        self.LED03_Display_lineEdit.setObjectName(u"LED03_Display_lineEdit")
+        self.LED03_Display_lineEdit.setMaximumSize(QSize(30, 16777215))
+
+        self.LED03_toggleButton_layout.addWidget(self.LED03_Display_lineEdit)
+
         self.LED03_Display_label = QLabel(self.LED03_Display_frame)
         self.LED03_Display_label.setObjectName(u"LED03_Display_label")
         self.LED03_Display_label.setMaximumSize(QSize(16777215, 16777215))
@@ -1396,6 +1418,12 @@ class Ui_MainWindow(object):
         self.LED04_toggleButton_layout.setSpacing(0)
         self.LED04_toggleButton_layout.setObjectName(u"LED04_toggleButton_layout")
         self.LED04_toggleButton_layout.setContentsMargins(0, 0, 5, 0)
+        self.LED04_Display_lineEdit = QLineEdit(self.LED04_Display_frame)
+        self.LED04_Display_lineEdit.setObjectName(u"LED04_Display_lineEdit")
+        self.LED04_Display_lineEdit.setMaximumSize(QSize(30, 16777215))
+
+        self.LED04_toggleButton_layout.addWidget(self.LED04_Display_lineEdit)
+
         self.LED04_Display_label = QLabel(self.LED04_Display_frame)
         self.LED04_Display_label.setObjectName(u"LED04_Display_label")
         self.LED04_Display_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
@@ -1465,6 +1493,12 @@ class Ui_MainWindow(object):
         self.LED05_toggleButton_layout.setSpacing(0)
         self.LED05_toggleButton_layout.setObjectName(u"LED05_toggleButton_layout")
         self.LED05_toggleButton_layout.setContentsMargins(0, 0, 5, 0)
+        self.LED05_Display_lineEdit = QLineEdit(self.LED05_Display_frame)
+        self.LED05_Display_lineEdit.setObjectName(u"LED05_Display_lineEdit")
+        self.LED05_Display_lineEdit.setMaximumSize(QSize(30, 16777215))
+
+        self.LED05_toggleButton_layout.addWidget(self.LED05_Display_lineEdit)
+
         self.LED05_Display_label = QLabel(self.LED05_Display_frame)
         self.LED05_Display_label.setObjectName(u"LED05_Display_label")
         self.LED05_Display_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
@@ -1535,6 +1569,12 @@ class Ui_MainWindow(object):
         self.LED06_toggleButton_layout.setSpacing(0)
         self.LED06_toggleButton_layout.setObjectName(u"LED06_toggleButton_layout")
         self.LED06_toggleButton_layout.setContentsMargins(0, 0, 5, 0)
+        self.LED06_Display_lineEdit = QLineEdit(self.LED06_Display_frame)
+        self.LED06_Display_lineEdit.setObjectName(u"LED06_Display_lineEdit")
+        self.LED06_Display_lineEdit.setMaximumSize(QSize(30, 16777215))
+
+        self.LED06_toggleButton_layout.addWidget(self.LED06_Display_lineEdit)
+
         self.LED06_Display_label = QLabel(self.LED06_Display_frame)
         self.LED06_Display_label.setObjectName(u"LED06_Display_label")
         self.LED06_Display_label.setMaximumSize(QSize(200, 16777215))
@@ -1605,6 +1645,12 @@ class Ui_MainWindow(object):
         self.LED07_toggleButton_layout.setSpacing(0)
         self.LED07_toggleButton_layout.setObjectName(u"LED07_toggleButton_layout")
         self.LED07_toggleButton_layout.setContentsMargins(0, 0, 5, 0)
+        self.LED07_Display_lineEdit = QLineEdit(self.LED07_Display_frame)
+        self.LED07_Display_lineEdit.setObjectName(u"LED07_Display_lineEdit")
+        self.LED07_Display_lineEdit.setMaximumSize(QSize(30, 16777215))
+
+        self.LED07_toggleButton_layout.addWidget(self.LED07_Display_lineEdit)
+
         self.LED07_Display_label = QLabel(self.LED07_Display_frame)
         self.LED07_Display_label.setObjectName(u"LED07_Display_label")
         self.LED07_Display_label.setMaximumSize(QSize(16777215, 16777215))
@@ -1675,6 +1721,12 @@ class Ui_MainWindow(object):
         self.LED08_toggleButton_layout.setSpacing(0)
         self.LED08_toggleButton_layout.setObjectName(u"LED08_toggleButton_layout")
         self.LED08_toggleButton_layout.setContentsMargins(0, 0, 5, 0)
+        self.LED08_Display_lineEdit = QLineEdit(self.LED08_Display_frame)
+        self.LED08_Display_lineEdit.setObjectName(u"LED08_Display_lineEdit")
+        self.LED08_Display_lineEdit.setMaximumSize(QSize(30, 16777215))
+
+        self.LED08_toggleButton_layout.addWidget(self.LED08_Display_lineEdit)
+
         self.LED08_Display_label = QLabel(self.LED08_Display_frame)
         self.LED08_Display_label.setObjectName(u"LED08_Display_label")
         self.LED08_Display_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
@@ -1744,6 +1796,12 @@ class Ui_MainWindow(object):
         self.LED09_toggleButton_layout.setSpacing(0)
         self.LED09_toggleButton_layout.setObjectName(u"LED09_toggleButton_layout")
         self.LED09_toggleButton_layout.setContentsMargins(0, 0, 5, 0)
+        self.LED09_Display_lineEdit = QLineEdit(self.LED09_Display_frame)
+        self.LED09_Display_lineEdit.setObjectName(u"LED09_Display_lineEdit")
+        self.LED09_Display_lineEdit.setMaximumSize(QSize(30, 16777215))
+
+        self.LED09_toggleButton_layout.addWidget(self.LED09_Display_lineEdit)
+
         self.LED09_Display_label = QLabel(self.LED09_Display_frame)
         self.LED09_Display_label.setObjectName(u"LED09_Display_label")
         self.LED09_Display_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
@@ -1809,15 +1867,21 @@ class Ui_MainWindow(object):
         self.LED10_Display_frame.setMaximumSize(QSize(125, 16777215))
         self.LED10_Display_frame.setFrameShape(QFrame.StyledPanel)
         self.LED10_Display_frame.setFrameShadow(QFrame.Raised)
-        self.LED010_toggleButton_layout = QHBoxLayout(self.LED10_Display_frame)
-        self.LED010_toggleButton_layout.setSpacing(0)
-        self.LED010_toggleButton_layout.setObjectName(u"LED010_toggleButton_layout")
-        self.LED010_toggleButton_layout.setContentsMargins(0, 0, 5, 0)
+        self.LED10_toggleButton_layout = QHBoxLayout(self.LED10_Display_frame)
+        self.LED10_toggleButton_layout.setSpacing(0)
+        self.LED10_toggleButton_layout.setObjectName(u"LED10_toggleButton_layout")
+        self.LED10_toggleButton_layout.setContentsMargins(0, 0, 5, 0)
+        self.LED10_Display_lineEdit = QLineEdit(self.LED10_Display_frame)
+        self.LED10_Display_lineEdit.setObjectName(u"LED10_Display_lineEdit")
+        self.LED10_Display_lineEdit.setMaximumSize(QSize(30, 16777215))
+
+        self.LED10_toggleButton_layout.addWidget(self.LED10_Display_lineEdit)
+
         self.LED10_Display_label = QLabel(self.LED10_Display_frame)
         self.LED10_Display_label.setObjectName(u"LED10_Display_label")
         self.LED10_Display_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
-        self.LED010_toggleButton_layout.addWidget(self.LED10_Display_label)
+        self.LED10_toggleButton_layout.addWidget(self.LED10_Display_label)
 
 
         self.aa_10.addWidget(self.LED10_Display_frame)
@@ -1882,6 +1946,12 @@ class Ui_MainWindow(object):
         self.LED11_toggleButton_layout.setSpacing(0)
         self.LED11_toggleButton_layout.setObjectName(u"LED11_toggleButton_layout")
         self.LED11_toggleButton_layout.setContentsMargins(0, 0, 5, 0)
+        self.LED11_Display_lineEdit = QLineEdit(self.LED11_Display_frame)
+        self.LED11_Display_lineEdit.setObjectName(u"LED11_Display_lineEdit")
+        self.LED11_Display_lineEdit.setMaximumSize(QSize(30, 16777215))
+
+        self.LED11_toggleButton_layout.addWidget(self.LED11_Display_lineEdit)
+
         self.LED11_Display_label = QLabel(self.LED11_Display_frame)
         self.LED11_Display_label.setObjectName(u"LED11_Display_label")
         self.LED11_Display_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
@@ -1951,6 +2021,12 @@ class Ui_MainWindow(object):
         self.LED12_toggleButton_layout.setSpacing(0)
         self.LED12_toggleButton_layout.setObjectName(u"LED12_toggleButton_layout")
         self.LED12_toggleButton_layout.setContentsMargins(0, 0, 5, 0)
+        self.LED12_Display_lineEdit = QLineEdit(self.LED12_Display_frame)
+        self.LED12_Display_lineEdit.setObjectName(u"LED12_Display_lineEdit")
+        self.LED12_Display_lineEdit.setMaximumSize(QSize(30, 16777215))
+
+        self.LED12_toggleButton_layout.addWidget(self.LED12_Display_lineEdit)
+
         self.LED12_Display_label = QLabel(self.LED12_Display_frame)
         self.LED12_Display_label.setObjectName(u"LED12_Display_label")
         self.LED12_Display_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
@@ -5635,7 +5711,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.AppName_pushButton.setText(QCoreApplication.translate("MainWindow", u"LED Zappelin' V2", None))
+        self.AppName_pushButton.setText(QCoreApplication.translate("MainWindow", u"LED Zappelin' v2", None))
         self.Reduce_pushButton.setText("")
         self.Expand_pushButton.setText("")
         self.Exit_pushButton.setText("")
@@ -5650,7 +5726,7 @@ class Ui_MainWindow(object):
         self.GitHub_pushButton.setText(QCoreApplication.translate("MainWindow", u"GitHub", None))
         self.HideSubFrame_pushButton.setText(QCoreApplication.translate("MainWindow", u"Hide Sub-Menus", None))
         self.Home_Logo.setText("")
-        self.Home_Title.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:48pt; color:#93a1a1;\">LED Zappelin' </span><span style=\" font-size:16pt; color:#93a1a1;\">v2</span></p><p align=\"center\"><span style=\" font-size:16pt;\">An open source and versatile LED controller for arbitrary spectrum </span></p><p align=\"center\"><span style=\" font-size:16pt;\">visual stimulation and optogenetics during 2-photon imaging</span></p><p align=\"right\"><span style=\" font-size:8pt; font-weight:700;\">Conceived and developed by M.J.Y. Zimmerman</span></p></body></html>", None))
+        self.Home_Title.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:48pt; color:#93a1a1;\">LED Zappelin' </span><span style=\" font-size:16pt; color:#93a1a1;\">v2</span></p><p align=\"center\"><span style=\" font-size:16pt;\">An open source and versatile LED controller for arbitrary spectrum </span></p><p align=\"center\"><span style=\" font-size:16pt;\">visual stimulation and optogenetics during 2-photon imaging</span></p><p align=\"right\"><span style=\" font-size:8pt; font-weight:700;\">Conceived and developed by M.J.Y. Zimmermann</span></p></body></html>", None))
         self.Home_Main_Text.setText(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -5688,29 +5764,33 @@ class Ui_MainWindow(object):
         self.Preselect_Load_frame_pushButton.setText(QCoreApplication.translate("MainWindow", u"Load", None))
         self.Preselect_Apply_pushButton.setText(QCoreApplication.translate("MainWindow", u"Apply", None))
         self.Preselect_Label.setText(QCoreApplication.translate("MainWindow", u"Load LED intensity settings", None))
-        self.LED01_Display_label.setText(QCoreApplication.translate("MainWindow", u"565nm", None))
+        self.LED01_Display_lineEdit.setText(QCoreApplication.translate("MainWindow", u"565", None))
+        self.LED01_Display_label.setText(QCoreApplication.translate("MainWindow", u" nm ", None))
         self.LED01_Value.setText("")
-        self.LED02_Display_label.setText(QCoreApplication.translate("MainWindow", u"482nm", None))
+        self.LED02_Display_lineEdit.setText(QCoreApplication.translate("MainWindow", u"482", None))
+        self.LED02_Display_label.setText(QCoreApplication.translate("MainWindow", u" nm ", None))
         self.LED02_Value.setText("")
-        self.LED03_Display_label.setText(QCoreApplication.translate("MainWindow", u"411nm", None))
+        self.LED03_Display_lineEdit.setText(QCoreApplication.translate("MainWindow", u"411", None))
+        self.LED03_Display_label.setText(QCoreApplication.translate("MainWindow", u" nm ", None))
         self.LED03_Value.setText("")
-        self.LED04_Display_label.setText(QCoreApplication.translate("MainWindow", u"361nm", None))
+        self.LED04_Display_lineEdit.setText(QCoreApplication.translate("MainWindow", u"361", None))
+        self.LED04_Display_label.setText(QCoreApplication.translate("MainWindow", u" nm ", None))
         self.LED04_Value.setText("")
-        self.LED05_Display_label.setText(QCoreApplication.translate("MainWindow", u"05", None))
+        self.LED05_Display_label.setText(QCoreApplication.translate("MainWindow", u" nm ", None))
         self.LED05_Value.setText("")
-        self.LED06_Display_label.setText(QCoreApplication.translate("MainWindow", u"06", None))
+        self.LED06_Display_label.setText(QCoreApplication.translate("MainWindow", u" nm ", None))
         self.LED06_Value.setText("")
-        self.LED07_Display_label.setText(QCoreApplication.translate("MainWindow", u"07", None))
+        self.LED07_Display_label.setText(QCoreApplication.translate("MainWindow", u" nm ", None))
         self.LED07_Value.setText("")
-        self.LED08_Display_label.setText(QCoreApplication.translate("MainWindow", u"08", None))
+        self.LED08_Display_label.setText(QCoreApplication.translate("MainWindow", u" nm ", None))
         self.LED08_Value.setText("")
-        self.LED09_Display_label.setText(QCoreApplication.translate("MainWindow", u"09", None))
+        self.LED09_Display_label.setText(QCoreApplication.translate("MainWindow", u" nm ", None))
         self.LED09_Value.setText("")
-        self.LED10_Display_label.setText(QCoreApplication.translate("MainWindow", u"10", None))
+        self.LED10_Display_label.setText(QCoreApplication.translate("MainWindow", u" nm ", None))
         self.LED10_Value.setText("")
-        self.LED11_Display_label.setText(QCoreApplication.translate("MainWindow", u"11", None))
+        self.LED11_Display_label.setText(QCoreApplication.translate("MainWindow", u" nm ", None))
         self.LED11_Value.setText("")
-        self.LED12_Display_label.setText(QCoreApplication.translate("MainWindow", u"12", None))
+        self.LED12_Display_label.setText(QCoreApplication.translate("MainWindow", u" nm ", None))
         self.LED12_Value.setText("")
         self.LED13_Display_label.setText(QCoreApplication.translate("MainWindow", u"13", None))
         self.LED13_Value.setText("")
