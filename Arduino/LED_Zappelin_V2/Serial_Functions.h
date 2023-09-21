@@ -1,6 +1,9 @@
+
+
 #include "General_Settings.h"
 #include <SerialCommand.h>   // SerialCommand Library by Steven Cogswell https://github.com/shyd/Arduino-SerialCommand
 SerialCommand SCmd;
+
 
 /* ----------------------------------------------------------------------------------*/
 /* -------------------------------- Turn all LED off --------------------------------*/
@@ -9,7 +12,18 @@ void LED_Off(){
     tlc.setPWM(LED_Array[l],0);                        
     strip.setPixelColor(l,strip.ColorHSV(hsv_hue_Array[l],hsv_sat_Array[l],0));
   } 
-  
+  tlc.write();   
+  strip.show();  
+}
+
+
+/* ----------------------------------------------------------------------------------*/
+/* -------------------------------- Turn all LED on -----------------/---------------*/
+void LED_On(){
+  for (int l = 0; l <= nLED-1; l++) {
+    tlc.setPWM(LED_Array[l],100);                        
+    strip.setPixelColor(l,strip.ColorHSV(hsv_hue_Array[l],hsv_sat_Array[l],100));
+  } 
   tlc.write();   
   strip.show();  
 }
@@ -17,52 +31,62 @@ void LED_Off(){
 
 /* ----------------------------------------------------------------------------------*/
 /* ----------------------- Inititate new stimulation sequence -----------------------*/
-void SetTrigger(){
-    arg = SCmd.next();
-    if (arg != NULL){
-      aNumber = atoi(arg);
-      TriggerMode = aNumber;
-    }
+void SetTriggerMode(){
+  arg = SCmd.next();
+  if (arg != NULL){
+    aNumber = atoi(arg);
+    TriggerMode = aNumber;
+  }
 
-    if (TriggerMode == 0){
-      TriggerrModeFlag = false;
-    }
+  if (TriggerMode == 0){
+    TriggerModeFlag = false;
+  }
 
-    if (TriggerMode > 0){
-      TriggerrModeFlag = true;
+  if (TriggerMode > 0){
+    TriggerModeFlag = true;
+  }
+}
 
-      int TriggerArray[TriggerMode];
-      for (int trig = 0; trig <= TriggerMode-1; trig++){
-        if (arg != NULL){
+void SetTrigger(){ 
+  if (TriggerMode > 0){
+    for (int trig = 0; trig <= TriggerMode-1; trig++){
+      arg = SCmd.next();
+      if (arg != NULL){
         aNumber = atoi(arg);
-        TriggerArray[trig] = aNumber;
-        }
+        TriggerArray[trig] = aNumber; 
       }
     }
-    tr = 0;
-    TriggerTime = TriggerArray[tr] / ResolutionMicros;
-    TriggerDuration = TriggerDur / ResolutionMicros;    
+  }
+  TriggerTime = TriggerArray[tr]; 
 }
 
 void SetStimulus(){
-    i = 1;
-    t = 0;
-    td = 0;
+  arg = SCmd.next();
+  if (arg != NULL){
+    aNumber = atoi(arg);
+    ResolutionMicros = aNumber;
+  }
+  arg = SCmd.next();
+  if (arg != NULL){
+    aNumber = atoi(arg);
+    iLoop = aNumber;
+  }
 
-    arg = SCmd.next();
-    if (arg != NULL){
-      aNumber = atoi(arg);
-      ResolutionMicros = aNumber;
-    }
-    arg = SCmd.next();
-    if (arg != NULL){
-      aNumber = atoi(arg);
-      iLoop = aNumber;
-    }
+  i = 1;
+  t = 0;
+  td = 0;
+  tr = 0;
 
-    digitalWrite(Trigger, HIGH);
-    TriggerFlag = true;  
-    StimulusFlag = true;
+  PreviousMicros = micros();
+  tPreviousMicros = micros();
+  tdPreviousMicros = micros();
+
+
+  tdDiffMicros = 0;
+  
+  digitalWrite(Trigger, HIGH);
+  TriggerFlag = true;  
+  StimulusFlag = true;
 }
 
 
@@ -292,12 +316,11 @@ void Brightness(){
   strip.setBrightness(brightness); // Set NeoPixel brightness 
 }
 
-
 /* ----------------------------------------------------------------------------------*/
 /* ------------------------------- Set NeoPixel LEDs --------------------------------*/
 void SetNeoPixelColours(){
   for (int l = 0; l <= nLED-1; l++) {
-    strip.setPixelColor(l,strip.ColorHSV(hsv_hue_Array[l],hsv_sat_Array[l],100));
+    strip.setPixelColor(l,strip.ColorHSV(hsv_hue_Array[l],hsv_sat_Array[l],hsv_val_Array[l]));
     strip.show();
     delay(50);
   }
@@ -312,6 +335,7 @@ void SCmdAddCommand(){
   SCmd.addCommand("P2", Stimulus2);
   SCmd.addCommand("P3", Stimulus3);
   SCmd.addCommand("S", SetStimulus);
+  SCmd.addCommand("M", SetTriggerMode);
   SCmd.addCommand("T", SetTrigger);
   SCmd.addCommand("O", StopStimulus);
   SCmd.addCommand("L1", LED01);
@@ -326,7 +350,12 @@ void SCmdAddCommand(){
   SCmd.addCommand("L10", LED10);
   SCmd.addCommand("L11", LED11);
   SCmd.addCommand("L12", LED12);
+  SCmd.addCommand("R", SetNeoPixelColours);
+  SCmd.addCommand("OFF", LED_Off);
+  SCmd.addCommand("ON", LED_On);
   SCmd.addCommand("B", Brightness);
-
-
 }
+
+
+
+

@@ -2,7 +2,7 @@
 */
 #include "LED_Values.h"                     // Include LED Values defined in the second tab
 #include <Adafruit_NeoPixel.h>
-#include <analogWrite.h>
+
 
 
 #define   Blank          35                 // Optional feature to prevent LED to light up 
@@ -24,7 +24,8 @@
 #define   pin_LED12      12                 // 2 - 5 
 
   int LED_Array[] = {pin_LED01, pin_LED02, pin_LED03, pin_LED04, pin_LED05, pin_LED06, pin_LED07, pin_LED08, pin_LED09, pin_LED10, pin_LED11, pin_LED12};
-  Adafruit_NeoPixel strip(NeoPixel_LED, NeoPixel, NEO_GRB + NEO_RGBW);//NEO_KHZ800);
+  //Adafruit_NeoPixel strip(NeoPixel_LED, NeoPixel, NEO_GRB + NEO_RGBW);
+    Adafruit_NeoPixel strip(NeoPixel_LED, NeoPixel, NEO_GRB + NEO_KHZ800);
 
 
 
@@ -41,23 +42,27 @@ boolean        flag;
 int            i;                           // Iteration loop factor
 int            iLoop;
 int            CurrentMicros;               // Current Microsecond clock
-int            PreviousMicros;              // Microsecond clock stamp
-int            DiffMicros;                  // Difference in microseconds between the clock and the stamp
+int            PreviousMicros;             // Microsecond clock stamp
+int            DiffMicros;                 // Difference in microseconds between the clock and the stamp
+int            tPreviousMicros;             // Microsecond clock stamp
+int            tDiffMicros;                 // Difference in microseconds between the clock and the stamp
+int            tdPreviousMicros;             // Microsecond clock stamp
+int            tdDiffMicros;                 // Difference in microseconds between the clock and the stamp
 int            ResolutionMicros;            // Microseconds delay between two i iteration
-boolean        TriggerrModeFlag;
+boolean        TriggerModeFlag;
 int            TriggerMode;                 // Set the Trigger mode
+int            TriggerArray[100];
 
 int            t;                           // Trigger counter
 int            td;                          // Trigger Pulse counter
 int            tr;                          // TriggerTime array counter
 boolean        TriggerFlag = false;         // Trigger Flag
 int            TriggerTime;                 // Lenght of the Trigger loop in ms 
-int            TriggerDur = 25000;          // Length of the Trigger signal in ms 
-int            TriggerDuration;
+int            TriggerDuration = 100000;          // Length of the Trigger signal in us 
 
 int            brightness    = 100;         // NeoPixel brightness (max = 255)
 int            l;                           // LED iteration factor
-int            nLED          = 12;          // Total number of LED 
+
 
 /* ----------------------------------------------------------------------------------*/
 /* --------------------- LED Zappelion' initialising conditions ---------------------*/
@@ -66,8 +71,11 @@ void HardwareSettings(){
   
 // Initialise the serial communication with PC
   Serial.begin(BaudRate);                      
-
+  
 // Initialise the Neopixel Strip
+  if (OldNeopixel == true){
+    Adafruit_NeoPixel strip(NeoPixel_LED, NeoPixel, NEO_GRB + NEO_KHZ800);
+  }
   strip.begin();           
   strip.show();                    // Turn OFF all pixels ASAP
   strip.setBrightness(brightness); // Set NeoPixel brightness 
@@ -80,8 +88,6 @@ void HardwareSettings(){
   pinMode(13,OUTPUT);
   digitalWrite(Trigger, LOW); 
 
-
-
 // Initialise parameters
   l = 0;
   t = 0;
@@ -90,5 +96,10 @@ void HardwareSettings(){
   CurrentMicros = 0;
   PreviousMicros = 0;
   DiffMicros = 0;
+  tPreviousMicros = 0;
+  tDiffMicros = 0;
+  tdPreviousMicros = 0;
   flag = true;
 }
+
+
