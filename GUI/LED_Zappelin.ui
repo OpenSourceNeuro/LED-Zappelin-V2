@@ -1917,7 +1917,7 @@ p, li { white-space: pre-wrap; }
                         <number>5</number>
                        </property>
                        <property name="bottomMargin">
-                        <number>5</number>
+                        <number>0</number>
                        </property>
                        <item>
                         <widget class="QFrame" name="LEDZap_Load_frame">
@@ -1980,6 +1980,12 @@ p, li { white-space: pre-wrap; }
                              </property>
                              <item>
                               <widget class="QPushButton" name="LEDZap_Load_pushButton">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>100</width>
+                                 <height>0</height>
+                                </size>
+                               </property>
                                <property name="maximumSize">
                                 <size>
                                  <width>100</width>
@@ -2028,14 +2034,28 @@ p, li { white-space: pre-wrap; }
                              </property>
                              <item>
                               <widget class="QLabel" name="LEDZap_Stimulus_Label">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>25</height>
+                                </size>
+                               </property>
                                <property name="maximumSize">
                                 <size>
                                  <width>275</width>
-                                 <height>16777215</height>
+                                 <height>25</height>
                                 </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <pointsize>8</pointsize>
+                                </font>
                                </property>
                                <property name="text">
                                 <string>Load a stimulus</string>
+                               </property>
+                               <property name="scaledContents">
+                                <bool>true</bool>
                                </property>
                                <property name="wordWrap">
                                 <bool>true</bool>
@@ -2049,16 +2069,16 @@ p, li { white-space: pre-wrap; }
                         </widget>
                        </item>
                        <item>
-                        <widget class="QFrame" name="LEDZap_Stimulus_Play_frame">
+                        <widget class="QFrame" name="LEDZap_StimulusMain_frame">
                          <property name="frameShape">
                           <enum>QFrame::StyledPanel</enum>
                          </property>
                          <property name="frameShadow">
                           <enum>QFrame::Raised</enum>
                          </property>
-                         <layout class="QHBoxLayout" name="horizontalLayout_46">
+                         <layout class="QHBoxLayout" name="horizontalLayout_141">
                           <property name="spacing">
-                           <number>10</number>
+                           <number>0</number>
                           </property>
                           <property name="leftMargin">
                            <number>0</number>
@@ -2073,22 +2093,16 @@ p, li { white-space: pre-wrap; }
                            <number>0</number>
                           </property>
                           <item>
-                           <widget class="QFrame" name="LEDZap_Display_pushButton_frame">
-                            <property name="maximumSize">
-                             <size>
-                              <width>125</width>
-                              <height>16777215</height>
-                             </size>
-                            </property>
+                           <widget class="QFrame" name="LEDZap_Stimulus_Left_frame">
                             <property name="frameShape">
                              <enum>QFrame::StyledPanel</enum>
                             </property>
                             <property name="frameShadow">
                              <enum>QFrame::Raised</enum>
                             </property>
-                            <layout class="QHBoxLayout" name="horizontalLayout_83">
+                            <layout class="QVBoxLayout" name="verticalLayout_96">
                              <property name="spacing">
-                              <number>0</number>
+                              <number>10</number>
                              </property>
                              <property name="leftMargin">
                               <number>0</number>
@@ -2103,38 +2117,146 @@ p, li { white-space: pre-wrap; }
                               <number>0</number>
                              </property>
                              <item>
-                              <widget class="QPushButton" name="LEDZap_Display_pushButton">
+                              <widget class="QFrame" name="LEDZap_Display_pushButton_frame">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>125</width>
+                                 <height>0</height>
+                                </size>
+                               </property>
                                <property name="maximumSize">
                                 <size>
-                                 <width>100</width>
+                                 <width>125</width>
                                  <height>16777215</height>
                                 </size>
                                </property>
-                               <property name="font">
-                                <font>
-                                 <pointsize>12</pointsize>
-                                </font>
+                               <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
                                </property>
-                               <property name="text">
-                                <string>Display</string>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
                                </property>
-                               <property name="checkable">
-                                <bool>true</bool>
+                               <layout class="QHBoxLayout" name="horizontalLayout_83">
+                                <property name="spacing">
+                                 <number>0</number>
+                                </property>
+                                <property name="leftMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="rightMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="bottomMargin">
+                                 <number>0</number>
+                                </property>
+                                <item>
+                                 <widget class="QPushButton" name="LEDZap_Display_pushButton">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>100</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>100</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="font">
+                                   <font>
+                                    <pointsize>12</pointsize>
+                                   </font>
+                                  </property>
+                                  <property name="text">
+                                   <string>Display</string>
+                                  </property>
+                                  <property name="checkable">
+                                   <bool>true</bool>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QFrame" name="LEDZap_Test_pushButton_frame">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>125</width>
+                                 <height>0</height>
+                                </size>
                                </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>125</width>
+                                 <height>16777215</height>
+                                </size>
+                               </property>
+                               <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QHBoxLayout" name="horizontalLayout_139">
+                                <property name="spacing">
+                                 <number>0</number>
+                                </property>
+                                <property name="leftMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="rightMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="bottomMargin">
+                                 <number>0</number>
+                                </property>
+                                <item>
+                                 <widget class="QPushButton" name="LEDZap_Test_pushButton">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>100</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>100</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="font">
+                                   <font>
+                                    <pointsize>12</pointsize>
+                                   </font>
+                                  </property>
+                                  <property name="text">
+                                   <string>LED test</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
                               </widget>
                              </item>
                             </layout>
                            </widget>
                           </item>
                           <item>
-                           <widget class="QFrame" name="LEDZap_Start_pushButton_frame">
+                           <widget class="QFrame" name="LEDZap_Stimulus_Right_frame">
                             <property name="frameShape">
                              <enum>QFrame::StyledPanel</enum>
                             </property>
                             <property name="frameShadow">
                              <enum>QFrame::Raised</enum>
                             </property>
-                            <layout class="QHBoxLayout" name="horizontalLayout_81">
+                            <layout class="QVBoxLayout" name="verticalLayout_97">
                              <property name="spacing">
                               <number>0</number>
                              </property>
@@ -2151,72 +2273,316 @@ p, li { white-space: pre-wrap; }
                               <number>0</number>
                              </property>
                              <item>
-                              <widget class="QPushButton" name="LEDZap_Start_pushButton">
-                               <property name="maximumSize">
-                                <size>
-                                 <width>175</width>
-                                 <height>16777215</height>
-                                </size>
+                              <widget class="QFrame" name="LEDZap_Stimulus_Play_frame">
+                               <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
                                </property>
-                               <property name="font">
-                                <font>
-                                 <pointsize>12</pointsize>
-                                </font>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
                                </property>
-                               <property name="text">
-                                <string>Start</string>
-                               </property>
-                               <property name="checkable">
-                                <bool>true</bool>
-                               </property>
+                               <layout class="QHBoxLayout" name="horizontalLayout_46">
+                                <property name="spacing">
+                                 <number>10</number>
+                                </property>
+                                <property name="leftMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="rightMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="bottomMargin">
+                                 <number>0</number>
+                                </property>
+                                <item>
+                                 <widget class="QFrame" name="LEDZap_Start_pushButton_frame">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>125</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>125</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="frameShape">
+                                   <enum>QFrame::StyledPanel</enum>
+                                  </property>
+                                  <property name="frameShadow">
+                                   <enum>QFrame::Raised</enum>
+                                  </property>
+                                  <layout class="QHBoxLayout" name="horizontalLayout_81">
+                                   <property name="spacing">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="leftMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="topMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="rightMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="bottomMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <item>
+                                    <widget class="QPushButton" name="LEDZap_Start_pushButton">
+                                     <property name="minimumSize">
+                                      <size>
+                                       <width>125</width>
+                                       <height>0</height>
+                                      </size>
+                                     </property>
+                                     <property name="maximumSize">
+                                      <size>
+                                       <width>125</width>
+                                       <height>16777215</height>
+                                      </size>
+                                     </property>
+                                     <property name="font">
+                                      <font>
+                                       <pointsize>12</pointsize>
+                                      </font>
+                                     </property>
+                                     <property name="text">
+                                      <string>Start</string>
+                                     </property>
+                                     <property name="checkable">
+                                      <bool>true</bool>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
+                                 </widget>
+                                </item>
+                                <item>
+                                 <widget class="QFrame" name="LEDZap_Stop_pushButton_frame">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>125</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>125</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="frameShape">
+                                   <enum>QFrame::StyledPanel</enum>
+                                  </property>
+                                  <property name="frameShadow">
+                                   <enum>QFrame::Raised</enum>
+                                  </property>
+                                  <layout class="QHBoxLayout" name="horizontalLayout_82">
+                                   <property name="spacing">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="leftMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="topMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="rightMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="bottomMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <item>
+                                    <widget class="QPushButton" name="LEDZap_Stop_pushButton">
+                                     <property name="minimumSize">
+                                      <size>
+                                       <width>125</width>
+                                       <height>0</height>
+                                      </size>
+                                     </property>
+                                     <property name="maximumSize">
+                                      <size>
+                                       <width>125</width>
+                                       <height>16777215</height>
+                                      </size>
+                                     </property>
+                                     <property name="font">
+                                      <font>
+                                       <pointsize>12</pointsize>
+                                      </font>
+                                     </property>
+                                     <property name="text">
+                                      <string>Stop</string>
+                                     </property>
+                                     <property name="checkable">
+                                      <bool>true</bool>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
+                                 </widget>
+                                </item>
+                               </layout>
                               </widget>
                              </item>
-                            </layout>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QFrame" name="LEDZap_Stop_pushButton_frame">
-                            <property name="frameShape">
-                             <enum>QFrame::StyledPanel</enum>
-                            </property>
-                            <property name="frameShadow">
-                             <enum>QFrame::Raised</enum>
-                            </property>
-                            <layout class="QHBoxLayout" name="horizontalLayout_82">
-                             <property name="spacing">
-                              <number>0</number>
-                             </property>
-                             <property name="leftMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="topMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="rightMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="bottomMargin">
-                              <number>0</number>
-                             </property>
                              <item>
-                              <widget class="QPushButton" name="LEDZap_Stop_pushButton">
-                               <property name="maximumSize">
-                                <size>
-                                 <width>175</width>
-                                 <height>16777215</height>
-                                </size>
+                              <widget class="QFrame" name="LEDZap_NumbeofLoop_frame">
+                               <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
                                </property>
-                               <property name="font">
-                                <font>
-                                 <pointsize>12</pointsize>
-                                </font>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
                                </property>
-                               <property name="text">
-                                <string>Stop</string>
-                               </property>
-                               <property name="checkable">
-                                <bool>true</bool>
-                               </property>
+                               <layout class="QHBoxLayout" name="horizontalLayout_140">
+                                <property name="spacing">
+                                 <number>0</number>
+                                </property>
+                                <property name="leftMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="rightMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="bottomMargin">
+                                 <number>0</number>
+                                </property>
+                                <item alignment="Qt::AlignHCenter">
+                                 <widget class="QFrame" name="LEDZap_NumbeofLoop_Label_frame">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>125</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>125</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="frameShape">
+                                   <enum>QFrame::StyledPanel</enum>
+                                  </property>
+                                  <property name="frameShadow">
+                                   <enum>QFrame::Raised</enum>
+                                  </property>
+                                  <layout class="QHBoxLayout" name="horizontalLayout_142">
+                                   <property name="spacing">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="leftMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="topMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="rightMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="bottomMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <item alignment="Qt::AlignRight">
+                                    <widget class="QLabel" name="LEDZap_NumbeofLoop_Label">
+                                     <property name="maximumSize">
+                                      <size>
+                                       <width>1752</width>
+                                       <height>16777215</height>
+                                      </size>
+                                     </property>
+                                     <property name="font">
+                                      <font>
+                                       <pointsize>10</pointsize>
+                                      </font>
+                                     </property>
+                                     <property name="text">
+                                      <string>Number of Loop :</string>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
+                                 </widget>
+                                </item>
+                                <item alignment="Qt::AlignHCenter">
+                                 <widget class="QFrame" name="LEDZap_NumbeofLoop_lineEdit_frame">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>125</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>125</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="frameShape">
+                                   <enum>QFrame::StyledPanel</enum>
+                                  </property>
+                                  <property name="frameShadow">
+                                   <enum>QFrame::Raised</enum>
+                                  </property>
+                                  <layout class="QHBoxLayout" name="horizontalLayout_143">
+                                   <property name="spacing">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="leftMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="topMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="rightMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="bottomMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <item>
+                                    <widget class="QLineEdit" name="LEDZap_NumbeofLoop">
+                                     <property name="minimumSize">
+                                      <size>
+                                       <width>100</width>
+                                       <height>0</height>
+                                      </size>
+                                     </property>
+                                     <property name="maximumSize">
+                                      <size>
+                                       <width>100</width>
+                                       <height>16777215</height>
+                                      </size>
+                                     </property>
+                                     <property name="font">
+                                      <font>
+                                       <pointsize>12</pointsize>
+                                      </font>
+                                     </property>
+                                     <property name="styleSheet">
+                                      <string notr="true"> border: 1px solid rgb(147,161,161);
+background-color: rgb(7, 54, 66);</string>
+                                     </property>
+                                     <property name="text">
+                                      <string>0</string>
+                                     </property>
+                                     <property name="alignment">
+                                      <set>Qt::AlignCenter</set>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
+                                 </widget>
+                                </item>
+                               </layout>
                               </widget>
                              </item>
                             </layout>
@@ -7626,6 +7992,12 @@ p, li { white-space: pre-wrap; }
                     </property>
                     <item>
                      <widget class="QFrame" name="Chrolis_StimulusControl_frame">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>100</height>
+                       </size>
+                      </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
@@ -7652,7 +8024,7 @@ p, li { white-space: pre-wrap; }
                         <number>5</number>
                        </property>
                        <property name="bottomMargin">
-                        <number>5</number>
+                        <number>0</number>
                        </property>
                        <item>
                         <widget class="QFrame" name="Chrolis_Load_frame">
@@ -7662,7 +8034,7 @@ p, li { white-space: pre-wrap; }
                          <property name="frameShadow">
                           <enum>QFrame::Raised</enum>
                          </property>
-                         <layout class="QHBoxLayout" name="horizontalLayout_60">
+                         <layout class="QHBoxLayout" name="horizontalLayout_15">
                           <property name="spacing">
                            <number>10</number>
                           </property>
@@ -7692,172 +8064,6 @@ p, li { white-space: pre-wrap; }
                             <property name="frameShadow">
                              <enum>QFrame::Raised</enum>
                             </property>
-                            <layout class="QHBoxLayout" name="horizontalLayout_15">
-                             <property name="spacing">
-                              <number>0</number>
-                             </property>
-                             <property name="leftMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="topMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="rightMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="bottomMargin">
-                              <number>0</number>
-                             </property>
-                             <item>
-                              <widget class="QPushButton" name="Chrolis_Load_pushButton">
-                               <property name="maximumSize">
-                                <size>
-                                 <width>100</width>
-                                 <height>16777215</height>
-                                </size>
-                               </property>
-                               <property name="font">
-                                <font>
-                                 <pointsize>12</pointsize>
-                                </font>
-                               </property>
-                               <property name="text">
-                                <string>Load</string>
-                               </property>
-                              </widget>
-                             </item>
-                            </layout>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QFrame" name="Chrolis_Stimulus_Label_frame">
-                            <property name="maximumSize">
-                             <size>
-                              <width>275</width>
-                              <height>16777215</height>
-                             </size>
-                            </property>
-                            <property name="frameShape">
-                             <enum>QFrame::StyledPanel</enum>
-                            </property>
-                            <property name="frameShadow">
-                             <enum>QFrame::Raised</enum>
-                            </property>
-                            <layout class="QHBoxLayout" name="horizontalLayout_112">
-                             <property name="spacing">
-                              <number>0</number>
-                             </property>
-                             <property name="leftMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="topMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="rightMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="bottomMargin">
-                              <number>0</number>
-                             </property>
-                             <item>
-                              <widget class="QLabel" name="Chrolis_Stimulus_Label">
-                               <property name="text">
-                                <string>Load a stimulus</string>
-                               </property>
-                               <property name="wordWrap">
-                                <bool>true</bool>
-                               </property>
-                              </widget>
-                             </item>
-                            </layout>
-                           </widget>
-                          </item>
-                         </layout>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QFrame" name="Chrolis_Stimulus_Play_frame">
-                         <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
-                         </property>
-                         <layout class="QHBoxLayout" name="horizontalLayout_61">
-                          <property name="spacing">
-                           <number>10</number>
-                          </property>
-                          <property name="leftMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="topMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="rightMargin">
-                           <number>0</number>
-                          </property>
-                          <property name="bottomMargin">
-                           <number>0</number>
-                          </property>
-                          <item>
-                           <widget class="QFrame" name="Chrolis_Display_pushButton_frame">
-                            <property name="maximumSize">
-                             <size>
-                              <width>125</width>
-                              <height>16777215</height>
-                             </size>
-                            </property>
-                            <property name="frameShape">
-                             <enum>QFrame::StyledPanel</enum>
-                            </property>
-                            <property name="frameShadow">
-                             <enum>QFrame::Raised</enum>
-                            </property>
-                            <layout class="QHBoxLayout" name="horizontalLayout_16">
-                             <property name="spacing">
-                              <number>0</number>
-                             </property>
-                             <property name="leftMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="topMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="rightMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="bottomMargin">
-                              <number>0</number>
-                             </property>
-                             <item>
-                              <widget class="QPushButton" name="Chrolis_Display_pushButton">
-                               <property name="maximumSize">
-                                <size>
-                                 <width>100</width>
-                                 <height>16777215</height>
-                                </size>
-                               </property>
-                               <property name="font">
-                                <font>
-                                 <pointsize>12</pointsize>
-                                </font>
-                               </property>
-                               <property name="text">
-                                <string>Display</string>
-                               </property>
-                              </widget>
-                             </item>
-                            </layout>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QFrame" name="Chrolis_Start_pushButton_frame">
-                            <property name="frameShape">
-                             <enum>QFrame::StyledPanel</enum>
-                            </property>
-                            <property name="frameShadow">
-                             <enum>QFrame::Raised</enum>
-                            </property>
                             <layout class="QHBoxLayout" name="horizontalLayout_110">
                              <property name="spacing">
                               <number>0</number>
@@ -7875,10 +8081,16 @@ p, li { white-space: pre-wrap; }
                               <number>0</number>
                              </property>
                              <item>
-                              <widget class="QPushButton" name="Chrolis_Start_pushButton">
+                              <widget class="QPushButton" name="Chrolis_Load_pushButton">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>100</width>
+                                 <height>0</height>
+                                </size>
+                               </property>
                                <property name="maximumSize">
                                 <size>
-                                 <width>175</width>
+                                 <width>100</width>
                                  <height>16777215</height>
                                 </size>
                                </property>
@@ -7888,7 +8100,10 @@ p, li { white-space: pre-wrap; }
                                 </font>
                                </property>
                                <property name="text">
-                                <string>Start</string>
+                                <string>Load</string>
+                               </property>
+                               <property name="checkable">
+                                <bool>true</bool>
                                </property>
                               </widget>
                              </item>
@@ -7896,7 +8111,7 @@ p, li { white-space: pre-wrap; }
                            </widget>
                           </item>
                           <item>
-                           <widget class="QFrame" name="Chrolis_Stop_pushButton_frame">
+                           <widget class="QFrame" name="Chrolis_Stimulus_Label_frame">
                             <property name="frameShape">
                              <enum>QFrame::StyledPanel</enum>
                             </property>
@@ -7920,21 +8135,556 @@ p, li { white-space: pre-wrap; }
                               <number>0</number>
                              </property>
                              <item>
-                              <widget class="QPushButton" name="Chrolis_Stop_pushButton">
+                              <widget class="QLabel" name="Chrolis_Stimulus_Label">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>25</height>
+                                </size>
+                               </property>
                                <property name="maximumSize">
                                 <size>
-                                 <width>175</width>
-                                 <height>16777215</height>
+                                 <width>275</width>
+                                 <height>25</height>
                                 </size>
                                </property>
                                <property name="font">
                                 <font>
-                                 <pointsize>12</pointsize>
+                                 <pointsize>8</pointsize>
                                 </font>
                                </property>
                                <property name="text">
-                                <string>Stop</string>
+                                <string>Load a stimulus</string>
                                </property>
+                               <property name="scaledContents">
+                                <bool>true</bool>
+                               </property>
+                               <property name="wordWrap">
+                                <bool>true</bool>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QFrame" name="Chrolis_StimulusMain_frame">
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_16">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QFrame" name="Chrolis_Stimulus_Left_frame">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_99">
+                             <property name="spacing">
+                              <number>10</number>
+                             </property>
+                             <property name="leftMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>0</number>
+                             </property>
+                             <item>
+                              <widget class="QFrame" name="Chrolis_Display_pushButton_frame">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>125</width>
+                                 <height>0</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>125</width>
+                                 <height>16777215</height>
+                                </size>
+                               </property>
+                               <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QHBoxLayout" name="horizontalLayout_147">
+                                <property name="spacing">
+                                 <number>0</number>
+                                </property>
+                                <property name="leftMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="rightMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="bottomMargin">
+                                 <number>0</number>
+                                </property>
+                                <item>
+                                 <widget class="QPushButton" name="Chrolis_Display_pushButton">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>100</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>100</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="font">
+                                   <font>
+                                    <pointsize>12</pointsize>
+                                   </font>
+                                  </property>
+                                  <property name="text">
+                                   <string>Display</string>
+                                  </property>
+                                  <property name="checkable">
+                                   <bool>true</bool>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QFrame" name="Chrolis_Test_pushButton_frame">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>125</width>
+                                 <height>0</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>125</width>
+                                 <height>16777215</height>
+                                </size>
+                               </property>
+                               <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QHBoxLayout" name="horizontalLayout_148">
+                                <property name="spacing">
+                                 <number>0</number>
+                                </property>
+                                <property name="leftMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="rightMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="bottomMargin">
+                                 <number>0</number>
+                                </property>
+                                <item>
+                                 <widget class="QPushButton" name="Chrolis_Test_pushButton">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>100</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>100</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="font">
+                                   <font>
+                                    <pointsize>12</pointsize>
+                                   </font>
+                                  </property>
+                                  <property name="text">
+                                   <string>LED test</string>
+                                  </property>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QFrame" name="Chrolis_Stimulus_Right_frame">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_98">
+                             <property name="spacing">
+                              <number>0</number>
+                             </property>
+                             <property name="leftMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>0</number>
+                             </property>
+                             <item>
+                              <widget class="QFrame" name="Chrolis_Stimulus_Play_frame">
+                               <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QHBoxLayout" name="horizontalLayout_60">
+                                <property name="spacing">
+                                 <number>10</number>
+                                </property>
+                                <property name="leftMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="rightMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="bottomMargin">
+                                 <number>0</number>
+                                </property>
+                                <item>
+                                 <widget class="QFrame" name="Chrolis_Start_pushButton_frame">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>125</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>125</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="frameShape">
+                                   <enum>QFrame::StyledPanel</enum>
+                                  </property>
+                                  <property name="frameShadow">
+                                   <enum>QFrame::Raised</enum>
+                                  </property>
+                                  <layout class="QHBoxLayout" name="horizontalLayout_112">
+                                   <property name="spacing">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="leftMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="topMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="rightMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="bottomMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <item>
+                                    <widget class="QPushButton" name="Chrolis_Start_pushButton">
+                                     <property name="minimumSize">
+                                      <size>
+                                       <width>125</width>
+                                       <height>0</height>
+                                      </size>
+                                     </property>
+                                     <property name="maximumSize">
+                                      <size>
+                                       <width>125</width>
+                                       <height>16777215</height>
+                                      </size>
+                                     </property>
+                                     <property name="font">
+                                      <font>
+                                       <pointsize>12</pointsize>
+                                      </font>
+                                     </property>
+                                     <property name="text">
+                                      <string>Start</string>
+                                     </property>
+                                     <property name="checkable">
+                                      <bool>true</bool>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
+                                 </widget>
+                                </item>
+                                <item>
+                                 <widget class="QFrame" name="Chrolis_Stop_pushButton_frame">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>125</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>125</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="frameShape">
+                                   <enum>QFrame::StyledPanel</enum>
+                                  </property>
+                                  <property name="frameShadow">
+                                   <enum>QFrame::Raised</enum>
+                                  </property>
+                                  <layout class="QHBoxLayout" name="horizontalLayout_138">
+                                   <property name="spacing">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="leftMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="topMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="rightMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="bottomMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <item>
+                                    <widget class="QPushButton" name="Chrolis_Stop_pushButton">
+                                     <property name="minimumSize">
+                                      <size>
+                                       <width>125</width>
+                                       <height>0</height>
+                                      </size>
+                                     </property>
+                                     <property name="maximumSize">
+                                      <size>
+                                       <width>125</width>
+                                       <height>16777215</height>
+                                      </size>
+                                     </property>
+                                     <property name="font">
+                                      <font>
+                                       <pointsize>12</pointsize>
+                                      </font>
+                                     </property>
+                                     <property name="text">
+                                      <string>Stop</string>
+                                     </property>
+                                     <property name="checkable">
+                                      <bool>true</bool>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QFrame" name="Chrolis_NumbeofLoop_frame">
+                               <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QHBoxLayout" name="horizontalLayout_144">
+                                <property name="spacing">
+                                 <number>0</number>
+                                </property>
+                                <property name="leftMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="rightMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="bottomMargin">
+                                 <number>0</number>
+                                </property>
+                                <item alignment="Qt::AlignHCenter">
+                                 <widget class="QFrame" name="Chrolis_NumbeofLoop_Label_frame">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>125</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>125</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="frameShape">
+                                   <enum>QFrame::StyledPanel</enum>
+                                  </property>
+                                  <property name="frameShadow">
+                                   <enum>QFrame::Raised</enum>
+                                  </property>
+                                  <layout class="QHBoxLayout" name="horizontalLayout_145">
+                                   <property name="spacing">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="leftMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="topMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="rightMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="bottomMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <item alignment="Qt::AlignRight">
+                                    <widget class="QLabel" name="Chrolis_NumbeofLoop_Label">
+                                     <property name="maximumSize">
+                                      <size>
+                                       <width>1752</width>
+                                       <height>16777215</height>
+                                      </size>
+                                     </property>
+                                     <property name="font">
+                                      <font>
+                                       <pointsize>10</pointsize>
+                                      </font>
+                                     </property>
+                                     <property name="text">
+                                      <string>Number of Loop :</string>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
+                                 </widget>
+                                </item>
+                                <item alignment="Qt::AlignHCenter">
+                                 <widget class="QFrame" name="Chrolis_NumbeofLoop_lineEdit_frame">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>125</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>125</width>
+                                    <height>16777215</height>
+                                   </size>
+                                  </property>
+                                  <property name="frameShape">
+                                   <enum>QFrame::StyledPanel</enum>
+                                  </property>
+                                  <property name="frameShadow">
+                                   <enum>QFrame::Raised</enum>
+                                  </property>
+                                  <layout class="QHBoxLayout" name="horizontalLayout_146">
+                                   <property name="spacing">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="leftMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="topMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="rightMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="bottomMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <item>
+                                    <widget class="QLineEdit" name="Chrolis_NumbeofLoop">
+                                     <property name="minimumSize">
+                                      <size>
+                                       <width>100</width>
+                                       <height>0</height>
+                                      </size>
+                                     </property>
+                                     <property name="maximumSize">
+                                      <size>
+                                       <width>100</width>
+                                       <height>16777215</height>
+                                      </size>
+                                     </property>
+                                     <property name="font">
+                                      <font>
+                                       <pointsize>12</pointsize>
+                                      </font>
+                                     </property>
+                                     <property name="styleSheet">
+                                      <string notr="true"> border: 1px solid rgb(147,161,161);
+background-color: rgb(7, 54, 66);</string>
+                                     </property>
+                                     <property name="text">
+                                      <string>0</string>
+                                     </property>
+                                     <property name="alignment">
+                                      <set>Qt::AlignCenter</set>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
+                                 </widget>
+                                </item>
+                               </layout>
                               </widget>
                              </item>
                             </layout>

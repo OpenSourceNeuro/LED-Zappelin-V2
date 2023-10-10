@@ -183,10 +183,12 @@ def PlayStimuli(self):
             self.df_StimRes = Df["Resolution"]
             self.df_nEntries = Df["nEntries"]
             self.df_Trigger = Df["Trigger"]
+            self.df_PreAdapt = Df["PreAdaptation"]
 
             self.Stim.append(self.df_StimRes)
             self.Stim.append(self.df_nEntries)
             self.Stim.append(self.df_Trigger)
+            self.Stim.append(self.df_PreAdapt)
 
             return self.Stim
 
@@ -222,15 +224,20 @@ def PlayStimuli(self):
     def SetStimulus(self):
         self.serial_port.write(str('S ' + str(self.Stim[12][0]) + ' '
                                    + str(self.Stim[13][0]) + ' '
+                                   + str(self.Stim[15][0]) + ' '
                                    + '\n').encode('utf-8'))
 
         for i in range(self.ui.Chrolis_nLED):
             Chrolis.GetChrolis(self,i)
 
+    def SetNumberofLoop(self):
+        self.ui.NumberofLoop = int(self.ui.Chrolis_NumbeofLoop.text())
+
     if self.ui.Chrolis_StimulusFlag:
         SetTriggerMode(self)
         SetTrigger(self)
         SetStimulus(self)
+        SetNumberofLoop(self)
         self.ui.Chrolis_PlayingFlag = True
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(lambda: PlayStimulus(self))
@@ -269,9 +276,13 @@ def PlayStimuli(self):
 
             self.Data = ReadSerial(self)
 
-            if int(self.Data) == 0:
+            if int(self.Data) == 1:
                 self.ui.Chrolis_Serial_label.setText("Playing Stimulus: Loop " + str(self.currentLoop))
                 self.currentLoop = self.currentLoop + 1
+
+            if self.ui.NumberofLoop > 0:
+                if self.currentLoop == self.ui.NumberofLoop + 2:
+                    StopStimulus(self)
 
 
 
@@ -414,4 +425,16 @@ def SetChrolisBrightness(self):
 
     self.serial_port.write(str('B ' + str(self.ProxyLED_value)
                                + '\n').encode('utf-8'))
+
+
+def TestLED(self):
+    for i in range(self.ui.Chrolis_nLED):
+
+        self.Chrolis_Val = self.ui.Chrolis_LED_Slider[i].value()
+        if self.serial_port.is_open:
+            self.serial_port.write(str('T' + str(i + 1) + (' ') + str(self.Chrolis_Val) + '\n').encode('utf-8'))
+            print(str('T' + str(i + 1) + (' ') + str(self.Chrolis_Val) ))
+            time.sleep(0.01)
+        else:
+            self.ui.Chrolis_Serial_label.setText('LED Zappelin is not connected: LEDs will not light up')
 

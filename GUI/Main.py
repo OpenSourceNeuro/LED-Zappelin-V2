@@ -161,6 +161,9 @@ class MainWindow(QMainWindow):
         # Display Stimulus
         self.ui.LEDZap_Display_pushButton.clicked.connect(lambda: Page101.LEDZap_Stimuli.DrawGraph(self))
 
+        # Test LEDs
+        self.ui.LEDZap_Test_pushButton.clicked.connect(lambda: Page101.TestLED(self))
+
         # Switch LED page
         self.ui.LEDZap_Switch_pushButton1.clicked.connect(lambda: self.ui.LEDZap_stackedWidget.setCurrentWidget(self.ui.LEDZap_page1))
         self.ui.LEDZap_Switch_pushButton2.clicked.connect(lambda: self.ui.LEDZap_stackedWidget.setCurrentWidget(self.ui.LEDZap_page2))
@@ -249,6 +252,10 @@ class MainWindow(QMainWindow):
 
         # Display Stimulus
         self.ui.Chrolis_Display_pushButton.clicked.connect(lambda: Page201.Chrolis_Stimuli.DrawGraph(self))
+
+        # Test LEDs
+        self.ui.Chrolis_Test_pushButton.clicked.connect(lambda: Page201.TestLED(self))
+
 
         # Graph Display page
         self.ui.Chrolis_Display1_pushButton.clicked.connect(lambda: self.ui.Chrolis_Display_stackedWidget.setCurrentWidget(self.ui.Chrolis_Display_page2))
