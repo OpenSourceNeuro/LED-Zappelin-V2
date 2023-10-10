@@ -21,14 +21,28 @@ void loop() {
   DiffMicros = CurrentMicros - PreviousMicros;       // Calculate 
   tDiffMicros = CurrentMicros - tPreviousMicros;
   
-  if (DiffMicros >= ResolutionMicros) {
-    PreviousMicros = micros();
+  if (PreAdaptationFlag == false){
+    if (DiffMicros >= ResolutionMicros) {
+      PreviousMicros = micros();
 
-    if (StimulusFlag == true){
-      Serial.println(i);
-      i += 1;
-      if(i >= iLoop){
-        i = 0;
+      if (StimulusFlag == true){
+        Serial.println(i);
+        i += 1;
+        if(i >= iLoop){
+          i = 1;
+        }
+      }
+    }
+  }
+  
+  if (PreAdaptationFlag == true){
+    if (DiffMicros >= PreAdaptMicros) {
+      PreviousMicros = micros();
+      PreAdaptationFlag = false;
+
+      if (StimulusFlag == true){
+        Serial.println(i);
+        i += 1;
       }
     }
   }

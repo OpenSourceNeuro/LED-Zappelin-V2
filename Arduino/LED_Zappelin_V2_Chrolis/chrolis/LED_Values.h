@@ -79,21 +79,6 @@ int LED12_Power = 0;
 
 int LEDPower[] = {LED1_Power, LED2_Power, LED3_Power, LED4_Power, LED5_Power, LED6_Power, LED7_Power, LED8_Power, LED9_Power, LED10_Power, LED11_Power, LED12_Power};
 
-int ChrolisPWM01 = 0;
-int ChrolisPWM02 = 0;
-int ChrolisPWM03 = 0;
-int ChrolisPWM04 = 0;
-int ChrolisPWM05 = 0;
-int ChrolisPWM06 = 0;
-int ChrolisPWM07 = 0;
-int ChrolisPWM08 = 0;
-int ChrolisPWM09 = 0;
-int ChrolisPWM10 = 0;
-int ChrolisPWM11 = 0;
-int ChrolisPWM12 = 0;
-
-int ChrolisPWM[] = {ChrolisPWM01, ChrolisPWM02, ChrolisPWM03, ChrolisPWM04, ChrolisPWM05, ChrolisPWM06, ChrolisPWM07, ChrolisPWM08, ChrolisPWM09, ChrolisPWM10, ChrolisPWM11, ChrolisPWM12};
-
 /* ----------------------------------------------------------------------------------*/
 /* -------------------------------- Neopixel HSV hue --------------------------------*/
 
