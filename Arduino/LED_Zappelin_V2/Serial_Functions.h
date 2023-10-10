@@ -426,7 +426,7 @@ void Test10(){
   }
 
   tlc.setPWM(LED_Array[9],LEDPower_Array[9]*LEDPower[9]/100);   
-  strip.setPixelColor(09strip.ColorHSV(hsv_hue_Array[9],hsv_sat_Array[9],hsv_val_Array[9]*LEDPower[9]/100));
+  strip.setPixelColor(9,strip.ColorHSV(hsv_hue_Array[9],hsv_sat_Array[9],hsv_val_Array[9]*LEDPower[9]/100));
 }
 
 
