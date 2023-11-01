@@ -10,6 +10,8 @@
 
 ## Driver Installation
 
+<brt>
+
 LED Zappelin runs on an Espressif ESP32 board and requires the USB to UART bridge <a href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers"> CP210x driver</a>,  which can be downloaded<a href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads"> <strong>here</strong></a>.
 
 Once the driver has been installed, users can operated the GUI (c.f. <a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/blob/main/GUI_UserManual.md"> GUI UserManual</a>) or modify the <a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/tree/main/Arduino">microcontroller code</a> through the Arduino Integrated Development Environment (IDE).
@@ -18,12 +20,19 @@ Once the driver has been installed, users can operated the GUI (c.f. <a href="ht
 
 ## Microcontroller Arduino code
 
+<br>
+
 ##### Arduino IDE
+
+<br>
+
 The ESP32 microcontroller runs a C++ code which can be accessed via the Arduino IDE, which can be downloaded <a href="https://www.arduino.cc/en/software">here</a>.
 
 <br>
 
 ##### ESP32 Add-on
+
+<br>
 
 <img align="right" height="200" src="./Images/Arduino01.png">
 
@@ -48,9 +57,12 @@ Search for ESP32 and press install button for the <strong>ESP32 by Espressif Sys
 Then click on the <strong>Install</strong> button.
 
 <br></br>
+
 ##### Compiling the code
 
-Within the Arduino IDE, user needs to select the FQBN (Fully Qualifief Board Name) on which the code will be compiled for.
+<br>
+
+Within the Arduino IDE, user needs to select the FQBN (Fully Qualified Board Name) on which the code will be compiled for.
 
 Here the ESP32 Dev Module needs to be selected.
 
@@ -63,5 +75,57 @@ The board name should be displayed  as shown.
 
 Before compiling the LED Zappelin code, a few librairies need to be installed:
   - Arduino-SerialCommand
-  -
-  Most of them can be downloaded
+  - Adafruit_TLC5947
+  - Adafruit_NeoPixel
+
+Most of them can be downloaded from the Arduino IDE: Go to <strong>Sketch > Include Librairy > Manage Libraries</strong>, enter the library name, then install it following the same process as for the board library.
+
+We however recommend for the Arduino-SerialCommand library to manually place the library folder which can be found <a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/tree/main/Arduino/Librairies">here</a> into the library folder. For Windows Users: <strong>C:/Users/x/Documents/Arduino/libraries</strong>
+
+Now everything is set to compile and verify the code.
+
+Users can now select the COM port on which the ESP32 is connected ( Go to <strong>Tools > port</strong> ) and upload the code onto the board.
+
+<br></br>
+
+
+##### Code and calibration
+
+<br>
+
+The code runs continuously on the board in a loop detailed in the main tab (LED_Zappelin_V2.ino).
+To not interfere with the proper function and communication of the program, avoid modifying this part of the code.
+
+<br>
+
+In <strong>General_Settings.h</strong>:
+
+- There exists two versions for the NeoPixel strips that serve as proxy LEDs for the device. If the proxy LEDs do not display the appropriate colours, comment/uncomment the Adafruit_NeoPixel functions:
+<img align="center" src="./Images/Arduino05.png">
+
+<br>
+
+In <strong> LED_Values.h </strong>
+
+- Users can select here the colours displayed by the proxy LEDs by entering the wavelength corresponding to each stimulating LEDs.
+<img align="center" src="./Images/Arduino06.png">
+
+- The TLC5947 is a linear current-sink LED driver with a 12bits resolution (4096 values).
+However, some LEDs may reach their maximum intensities before reaching the maximum stimulating value (4095). A calibration step is then require here.
+
+    Trimmer potentiometers corresponding to each LED channels can be found on the device. They regulate the maximum current intensity each stimulating LED can be drove with.
+
+    First, user need to set each stimulating LED to their desired maximum intensity by adjusting the potentiometer value.
+
+    Once done, play a <a href="">step-increased stimulation sequence</a> for the tested LED and not at which value the LED maximum intensity is reached and (may?) plateau.
+
+    Finally enter the noted value in the <strong> LED_Values.h</strong> tab.
+    <img align="center" src="./Images/Arduino07.png">
+
+    <br></br>
+
+    Reupload the code onto the board, now the tested LED will have a linear intensity increase from 0 to 100% without any saturation.
+
+<br></br>
+
+No further modification of the code is then required from the user who can now control the board directly from the GUI.
