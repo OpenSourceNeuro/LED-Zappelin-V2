@@ -104,7 +104,7 @@ class LED_Zappelin():
             if self.serial_port.is_open:
                 pass
             else:
-                self.ui.Chrolis_Serial_label.setText(
+                self.ui.LED_Zap_Serial_label.setText(
                     'LED Zappelin is not connected: LED value change will not be applied')
 
     def ActivateLED(self,i):
