@@ -2,7 +2,7 @@
 <img width="270" height="170" src="./Images/SpikyLogo.png">
 </p>
 
-<h1 align="center"> Spikeling v2.2 - GUI Instruction Manual</h1></p>
+<h1 align="center"> LED Zappelin' v2.2 - GUI Instruction Manual</h1></p>
 
 
 <br></br>
