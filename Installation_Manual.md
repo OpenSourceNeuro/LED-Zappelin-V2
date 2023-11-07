@@ -8,9 +8,40 @@
 <br></br>
 
 
-## Driver Installation
+## Hardware
+<br>
 
-<brt>
+<p align="justify">
+On the stimulator board, LEDs are controlled by the <a href="https://www.adafruit.com/product/1429">  TLC5947</a> LED driver. This is a constant current driver, which is exactly what it is required for precise LED intensity control.
+</p>
+
+<p align="justify">
+A constant current driver gives some flexibility with the supply voltage and dismiss the need to use current limiting resistors. Stimulating LEDs can then be connected directly to the LED output on the device.
+</p>
+
+<p align="justify">
+The TLC5947 driver will adjust automatically to any power supply fluctuation, preventing LED to flicker, increasing their life-spam and maintaining their efficiency over time, hence reducing maintenance calibration or replacement.
+</p>
+
+<p align="justify">
+The board on the stimulator is set by default to deliver 15mA per LED channel, which is safe to virtually all LEDs that can be purchased on the market. However it is possible to operate the LED channels at different currents by replacing the on-board reference resistor with a through-hole resistor. The maximum current level at which the TLC5947 driver can operate being 30mA per channel
+</p>
+
+<img align="right" width="500" src="./Images/TLC5947.png">
+<p align="justify">
+The location of the through-hole resistor is circled in red and the following graph shows the relationship between the resistance and the driver output current. If the user wants / needs to change the current output, the LED datasheet will provide the optimal forward current required. Still it is not expected that such current change would be necessary.
+</p>
+
+<p align="justify">
+The TLC driver is powered separately from the microcontroller, from the back of the device and can take 5v to 30V. Since the TLC is a constant current driver, the voltage selection is not really critical. It just needs to be slightly higher than the LEDs forward voltage (typically around 3v for standard LEDs). In doubt consult the LED datasheet
+</p>
+
+
+
+<br></br>
+
+## Driver Installation
+<br>
 
 LED Zappelin runs on an Espressif ESP32 board and requires the USB to UART bridge <a href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers"> CP210x driver</a>,  which can be downloaded<a href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads"> <strong>here</strong></a>.
 
