@@ -6,8 +6,8 @@
 #include <Adafruit_NeoPixel.h>
 
 
-#define   MOSI           23                 // TLC SPI connection, Date Out
-#define   MISO           19                 // TLC SPI connection,Data In 
+#define   MISO           23                 // TLC SPI connection, Data Out
+#define   MOSI           19                 // TLC SPI connection, Data In 
 #define   CLK            18                 // TLC SPI connection, Clock 
 #define   latch          5                  // TLC Latch
 #define   Blank          17                 // TLC Ouput Enable, Also Optional feature to prevent LED to light up when powering up the TLC board
@@ -18,7 +18,7 @@
 #define   Trigger        26                 // Trigger channel must be connected to pin A0/DAC2
 
 
-    Adafruit_TLC5947 tlc = Adafruit_TLC5947(1, CLK, MOSI, latch);
+    Adafruit_TLC5947 tlc = Adafruit_TLC5947(1, CLK, MISO, latch);
     //Adafruit_NeoPixel strip(NeoPixel_LED, NeoPixel, NEO_GRB + NEO_RGBW);
     Adafruit_NeoPixel strip(NeoPixel_LED, NeoPixel, NEO_GRB + NEO_KHZ800);
 
