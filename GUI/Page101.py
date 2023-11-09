@@ -197,7 +197,7 @@ def PlayStimuli(self):
 
 
     def SetTriggerMode(self):
-        self.TriggerMode = int(self.Stim[14][0])
+        self.TriggerMode = int(self.Stim[6][0])
 
         if self.TriggerMode == 0:
             self.serial_port.write(str('M ' + str(self.TriggerMode) + '\n').encode('utf-8'))
@@ -207,12 +207,12 @@ def PlayStimuli(self):
 
 
     def SetTrigger(self):
-        self.TriggerMode = int(self.Stim[14][0])
+        self.TriggerMode = int(self.Stim[6][0])
 
         if self.TriggerMode > 0:
             self.TriggerString = ""
             for i in range(self.TriggerMode):
-                self.TriggerString += ' ' + str(int(self.Stim[14][i+1]))
+                self.TriggerString += ' ' + str(int(self.Stim[6][i+1]))
             self.serial_port.write(str('T' + self.TriggerString + '\n').encode('utf-8'))
         elif self.TriggerMode == 0:
             pass
@@ -221,9 +221,9 @@ def PlayStimuli(self):
 
 
     def SetStimulus(self):
-        self.serial_port.write(str('S ' + str(self.Stim[12][0]) + ' '
-                                   + str(self.Stim[13][0]) + ' '
-                                   + str(self.Stim[15][0]) + ' '
+        self.serial_port.write(str('S ' + str(self.Stim[4][0]) + ' '
+                                   + str(self.Stim[5][0]) + ' '
+                                   + str(self.Stim[7][0]) + ' '
                                    + '\n').encode('utf-8'))
 
         for i in range (self.ui.LEDZap_nLED):
@@ -261,16 +261,6 @@ def PlayStimuli(self):
                                        + str(self.Stim[1][int(self.Data)]) + ' '
                                        + str(self.Stim[2][int(self.Data)]) + ' '
                                        + str(self.Stim[3][int(self.Data)]) + ' '
-                                       + '\n').encode('utf-8'))
-            self.serial_port.write(str('P2 ' + str(self.Stim[4][int(self.Data)]) + ' '
-                                       + str(self.Stim[5][int(self.Data)]) + ' '
-                                       + str(self.Stim[6][int(self.Data)]) + ' '
-                                       + str(self.Stim[7][int(self.Data)]) + ' '
-                                       + '\n').encode('utf-8'))
-            self.serial_port.write(str('P3 ' + str(self.Stim[8][int(self.Data)]) + ' '
-                                       + str(self.Stim[9][int(self.Data)]) + ' '
-                                       + str(self.Stim[10][int(self.Data)]) + ' '
-                                       + str(self.Stim[11][int(self.Data)]) + ' '
                                        + '\n').encode('utf-8'))
             self.serial_port.write(str('P' + '\n').encode('utf-8'))
 
@@ -401,15 +391,6 @@ def ApplyPreSet(self):
     self.ui.LED02_Slider.setValue(self.Df_PreSelect["LED02"][0])
     self.ui.LED03_Slider.setValue(self.Df_PreSelect["LED03"][0])
     self.ui.LED04_Slider.setValue(self.Df_PreSelect["LED04"][0])
-    self.ui.LED05_Slider.setValue(self.Df_PreSelect["LED05"][0])
-    self.ui.LED06_Slider.setValue(self.Df_PreSelect["LED06"][0])
-    self.ui.LED07_Slider.setValue(self.Df_PreSelect["LED07"][0])
-    self.ui.LED08_Slider.setValue(self.Df_PreSelect["LED08"][0])
-    self.ui.LED09_Slider.setValue(self.Df_PreSelect["LED09"][0])
-    self.ui.LED10_Slider.setValue(self.Df_PreSelect["LED10"][0])
-    self.ui.LED11_Slider.setValue(self.Df_PreSelect["LED11"][0])
-    self.ui.LED12_Slider.setValue(self.Df_PreSelect["LED12"][0])
-
 
 
 
@@ -435,10 +416,8 @@ def ChangeToggleButton(self,i):
                                                   active_color='#%02x%02x%02x' % tuple(self.RGB)
                                                   )
     self.ui.LEDZap_LED_toggleButton[i].setChecked(True)
-    #print(self.ui.LEDZap_LED_toggleButton[i].objectName())
     self.ui.LED_toggleButton_layout[i].removeItem(self.ui.LED_toggleButton_layout[i].itemAt(2))
     self.ui.LED_toggleButton_layout[i].addWidget(self.ui.LEDZap_LED_toggleButton[i])
-    #print(self.ui.LEDZap_LED_toggleButton[i])
 
     self.ui.LEDZap_LED_toggleButton[i] = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
                                                   circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
@@ -455,6 +434,7 @@ def TestLED(self):
         self.LED_Val = self.ui.LEDZap_LED_Slider[i].value()
         if self.serial_port.is_open:
             self.serial_port.write(str('T' + str(i + 1) + (' ') + str(self.LED_Val) + '\n').encode('utf-8'))
+            print(str('T' + str(i + 1) + (' ') + str(self.LED_Val)))
             time.sleep(0.01)
         else:
             self.ui.LED_Zap_Serial_label.setText('LED Zappelin is not connected: LEDs will not light up')
