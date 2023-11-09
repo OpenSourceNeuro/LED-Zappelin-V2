@@ -25,7 +25,7 @@ The GUI (Graphical User Interface) is developed on the python libraries PyQt6/Py
 </p>
 
 <p align="justify">
-However, for convenience, an <strong>.exe</strong> file has been generated from the above code and can be found <a href=""> here</a>
+However, for convenience, an <strong>.exe</strong> file has been generated from the above code and can be found <a href="https://github.com/OpenSourceNeuro/LED-Zappelin-V2/tree"> here</a>
 </p>
 
 <br></br>
