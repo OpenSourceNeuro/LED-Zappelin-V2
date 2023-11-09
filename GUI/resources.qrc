@@ -1,13 +1,12 @@
 <RCC>
   <qresource prefix="resources">
-    <file>resources/Opsin.png</file>
+    <file>resources/under_construction.svg</file>
     <file>resources/LED.png</file>
     <file>resources/MenuRight.png</file>
     <file>resources/Settings.png</file>
     <file>resources/About.png</file>
     <file>resources/Artboard 1.png</file>
     <file>resources/Baden-Logo2.png</file>
-    <file>resources/Chrolis.png</file>
     <file>resources/DarkSideOfTheRetina.png</file>
     <file>resources/Drop.png</file>
     <file>resources/DropMenuLeft.png</file>
@@ -20,7 +19,6 @@
     <file>resources/MenuLeft.png</file>
     <file>resources/Reduce.png</file>
     <file>resources/SizeGrip.png</file>
-    <file>resources/Spectra.png</file>
     <file>resources/SpikyLogo.png</file>
     <file>resources/Stimulus.png</file>
   </qresource>
