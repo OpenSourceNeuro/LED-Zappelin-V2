@@ -1,5 +1,3 @@
-
-
 #include "General_Settings.h"
 #include <SerialCommand.h>   // SerialCommand Library by Steven Cogswell https://github.com/shyd/Arduino-SerialCommand
 SerialCommand SCmd;
@@ -90,7 +88,6 @@ void SetStimulus(){
 
   tdDiffMicros = 0;
   
-  digitalWrite(Trigger, HIGH);
   TriggerFlag = true;  
   StimulusFlag = true;
 }
@@ -175,6 +172,8 @@ void Test1(){
 
   tlc.setPWM(LED_Array[0],LEDPower_Array[0]*LEDPower[0]/100);   
   strip.setPixelColor(0,strip.ColorHSV(hsv_hue_Array[0],hsv_sat_Array[0],hsv_val_Array[0]*LEDPower[0]/100));
+  tlc.write();   
+  strip.show();
 }
 
 
@@ -203,6 +202,8 @@ void Test2(){
 
   tlc.setPWM(LED_Array[1],LEDPower_Array[1]*LEDPower[1]/100);   
   strip.setPixelColor(1,strip.ColorHSV(hsv_hue_Array[1],hsv_sat_Array[1],hsv_val_Array[1]*LEDPower[1]/100));
+  tlc.write();   
+  strip.show();
 }
 
 
@@ -231,6 +232,8 @@ void Test3(){
 
   tlc.setPWM(LED_Array[2],LEDPower_Array[2]*LEDPower[2]/100);   
   strip.setPixelColor(2,strip.ColorHSV(hsv_hue_Array[2],hsv_sat_Array[2],hsv_val_Array[2]*LEDPower[2]/100));
+  tlc.write();   
+  strip.show();
 }
 
 
@@ -259,6 +262,8 @@ void Test4(){
 
   tlc.setPWM(LED_Array[3],LEDPower_Array[3]*LEDPower[3]/100);   
   strip.setPixelColor(3,strip.ColorHSV(hsv_hue_Array[3],hsv_sat_Array[3],hsv_val_Array[3]*LEDPower[3]/100));
+  tlc.write();   
+  strip.show();
 }
 
 
@@ -287,6 +292,8 @@ void Test5(){
 
   tlc.setPWM(LED_Array[4],LEDPower_Array[4]*LEDPower[4]/100);   
   strip.setPixelColor(4,strip.ColorHSV(hsv_hue_Array[4],hsv_sat_Array[4],hsv_val_Array[4]*LEDPower[4]/100));
+  tlc.write();   
+  strip.show();
 }
 
 
@@ -315,6 +322,8 @@ void Test6(){
 
   tlc.setPWM(LED_Array[5],LEDPower_Array[5]*LEDPower[5]/100);   
   strip.setPixelColor(5,strip.ColorHSV(hsv_hue_Array[5],hsv_sat_Array[5],hsv_val_Array[5]*LEDPower[5]/100));
+  tlc.write();   
+  strip.show();
 }
 
 
@@ -343,6 +352,8 @@ void Test7(){
 
   tlc.setPWM(LED_Array[6],LEDPower_Array[6]*LEDPower[6]/100);   
   strip.setPixelColor(6,strip.ColorHSV(hsv_hue_Array[6],hsv_sat_Array[6],hsv_val_Array[6]*LEDPower[6]/100));
+  tlc.write();   
+  strip.show();
 }
 
 
@@ -371,6 +382,8 @@ void Test8(){
 
   tlc.setPWM(LED_Array[7],LEDPower_Array[7]*LEDPower[7]/100);   
   strip.setPixelColor(7,strip.ColorHSV(hsv_hue_Array[7],hsv_sat_Array[7],hsv_val_Array[7]*LEDPower[7]/100));
+  tlc.write();   
+  strip.show();
 }
 
 
@@ -399,6 +412,8 @@ void Test9(){
 
   tlc.setPWM(LED_Array[8],LEDPower_Array[8]*LEDPower[8]/100);   
   strip.setPixelColor(8,strip.ColorHSV(hsv_hue_Array[8],hsv_sat_Array[8],hsv_val_Array[8]*LEDPower[8]/100));
+  tlc.write();   
+  strip.show();
 }
 
 
@@ -427,6 +442,8 @@ void Test10(){
 
   tlc.setPWM(LED_Array[9],LEDPower_Array[9]*LEDPower[9]/100);   
   strip.setPixelColor(9,strip.ColorHSV(hsv_hue_Array[9],hsv_sat_Array[9],hsv_val_Array[9]*LEDPower[9]/100));
+  tlc.write();   
+  strip.show();
 }
 
 
@@ -455,6 +472,8 @@ void Test11(){
 
   tlc.setPWM(LED_Array[10],LEDPower_Array[10]*LEDPower[10]/100);   
   strip.setPixelColor(10,strip.ColorHSV(hsv_hue_Array[10],hsv_sat_Array[10],hsv_val_Array[10]*LEDPower[10]/100));
+  tlc.write();   
+  strip.show();
 }
 
 
@@ -483,7 +502,6 @@ void Test12(){
 
   tlc.setPWM(LED_Array[11],LEDPower_Array[11]*LEDPower[11]/100);   
   strip.setPixelColor(11,strip.ColorHSV(hsv_hue_Array[11],hsv_sat_Array[11],hsv_val_Array[11]*LEDPower[11]/100));
-
   tlc.write();   
   strip.show();  
 }
@@ -554,7 +572,3 @@ void SCmdAddCommand(){
   SCmd.addCommand("ON", LED_On);
   SCmd.addCommand("B", Brightness);
 }
-
-
-
-

@@ -51,13 +51,13 @@ void loop() {
  
   if (tDiffMicros >= TriggerTime ) {
     tPreviousMicros = micros();
-
-    if (StimulusFlag == true){
   
-      if (TriggerModeFlag == true) {
-        TriggerFlag = true;
-        tdPreviousMicros = CurrentMicros;
-        digitalWrite(Trigger, HIGH);
+      if (StimulusFlag == true && PreAdaptationFlag == false){
+
+        if (TriggerModeFlag == true) {
+          TriggerFlag = true;
+          tdPreviousMicros = CurrentMicros;
+          digitalWrite(Trigger, HIGH);
         
         tr +=1;
         if (tr >= TriggerMode){

@@ -1,6 +1,7 @@
 
-boolean   OldNeopixel  = true;              // Set Neopixel stick version (RGB vs RGBW)
+boolean   OldNeopixel  = false;              // Set Neopixel stick version (RGB vs RGBW)
 int       nLED         = 12;                // Total number of LED 
+
 
 /* ----------------------------------------------------------------------------------*/
 /* ------------------------------ LED Wavelength (nm) -------------------------------*/

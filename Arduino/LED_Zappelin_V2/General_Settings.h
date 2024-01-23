@@ -18,9 +18,10 @@
 #define   Trigger        26                 // Trigger channel must be connected to pin A0/DAC2
 
 
-    Adafruit_TLC5947 tlc = Adafruit_TLC5947(1, CLK, MOSI, latch);
-    //Adafruit_NeoPixel strip(NeoPixel_LED, NeoPixel, NEO_GRB + NEO_RGBW);
-    Adafruit_NeoPixel strip(NeoPixel_LED, NeoPixel, NEO_GRB + NEO_KHZ800);
+  Adafruit_TLC5947 tlc = Adafruit_TLC5947(1, CLK, MOSI, latch);
+  Adafruit_NeoPixel strip(NeoPixel_LED, NeoPixel, NEO_GRB + NEO_RGBW);
+
+  //Adafruit_NeoPixel strip(NeoPixel_LED, NeoPixel, NEO_GRB + NEO_KHZ800);
 
 
 /* ----------------------------------------------------------------------------------*/
@@ -72,10 +73,6 @@ void HardwareSettings(){
   tlc.begin();
   tlc.write();  
 
-// Initialise the Neopixel Strip
-  if (OldNeopixel == true){
-    Adafruit_NeoPixel strip(NeoPixel_LED, NeoPixel, NEO_GRB + NEO_KHZ800);
-  }
   strip.begin();           
   strip.show();                    // Turn OFF all pixels ASAP
   strip.setBrightness(brightness); // Set NeoPixel brightness 
