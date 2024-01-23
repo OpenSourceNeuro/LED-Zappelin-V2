@@ -29,7 +29,6 @@ for port in ports:
 
 class LED_Zappelin():
 
-
     def ShowPage(self):
         self.ui.Main_stackedWidget.setCurrentWidget(self.ui.LEDZap_Page)
         self.ui.LEDZap_stackedWidget.setCurrentWidget(self.ui.LEDZap_page1)
@@ -91,8 +90,9 @@ class LED_Zappelin():
                 self.ui.LEDZap_LED_Value[i].setText(str(self.All_LED_Val) + ' %')
 
                 if self.serial_port.is_open:
-                    self.serial_port.write(str('L' + str(i + 1) + (' ') + str(self.All_LED_Val) + '\n').encode('utf-8'))
-                    time.sleep(0.01)
+                    pass
+                    # self.serial_port.write(str('L' + str(i + 1) + (' ') + str(self.All_LED_Val) + '\n').encode('utf-8'))
+                    # time.sleep(0.01)
                 else:
                     self.ui.LED_Zap_Serial_label.setText('LED Zappelin is not connected: LED value change will not be applied')
         else:
@@ -110,7 +110,7 @@ class LED_Zappelin():
     def ActivateLED(self,i):
         if self.ui.LEDZap_LED_toggleButton[i].isChecked():
             self.ui.LEDZap_LED_Slider[i].setEnabled(True)
-            self.LED_Val = self.ui.LEDZap_LED_Slider[i].value()
+            self.All_LED_Val = self.ui.LEDZap_LED_Slider[i].value()
             self.ui.LEDZap_LED_Value[i].setText(str(self.LED_Val) +' %')
             if self.serial_port.is_open:
                 self.serial_port.write(str('L' + str(i + 1) + (' ') + str(self.All_LED_Val) + '\n').encode('utf-8'))
@@ -130,8 +130,9 @@ class LED_Zappelin():
         self.ui.GetLEDFlag = False
         self.All_LED_Val = self.ui.All_LED_Slider.value()
         for i in range(self.ui.LEDZap_nLED + 1):
-            self.ui.LEDZap_LED_Slider[i].setValue(self.All_LED_Val)
-            self.ui.LEDZap_LED_Value[i].setText(str(self.All_LED_Val) + ' %')
+            if self.ui.LEDZap_LED_toggleButton[i].isChecked() == True:
+                self.ui.LEDZap_LED_Slider[i].setValue(self.All_LED_Val)
+                self.ui.LEDZap_LED_Value[i].setText(str(self.All_LED_Val) + ' %')
             if self.serial_port.is_open:
                 self.serial_port.write(str('L' + str(i + 1) + (' ') + str(self.All_LED_Val) + '\n').encode('utf-8'))
                 time.sleep(0.01)
@@ -147,6 +148,7 @@ class LED_Zappelin():
             self.ui.LEDZap_LED_Value[i].setText(str(self.LED_Val) + ' %')
             if self.serial_port.is_open:
                 self.serial_port.write(str('L' + str(i + 1) + (' ') + str(self.LED_Val) + '\n').encode('utf-8'))
+                #print(str('L' + str(i + 1) + (' ') + str(self.LED_Val)))
             else:
                 self.ui.LED_Zap_Serial_label.setText('LED Zappelin is not connected: LED value change will not be applied')
 
@@ -162,6 +164,11 @@ class LED_Zappelin():
             for i in range(self.ui.LEDZap_nLED + 1):
                 self.ui.LEDZap_LED_Slider[i].setValue(0)
                 self.ui.LEDZap_LED_Value[i].setText('Off')
+
+
+
+def PlayStimuliButton(self):
+    self.ui.LEDZap_Start_pushButton.setStyleSheet("color: rgb(250, 250, 250);\n" "background-color: rgb(220, 50, 47);")
 
 
 def PlayStimuli(self):
@@ -218,8 +225,6 @@ def PlayStimuli(self):
             pass
 
 
-
-
     def SetStimulus(self):
         self.serial_port.write(str('S ' + str(self.Stim[12][0]) + ' '
                                    + str(self.Stim[13][0]) + ' '
@@ -250,8 +255,6 @@ def PlayStimuli(self):
                 self.ui.LEDZap_PlayingFlag = False
                 self.ui.LEDZap_StartStimulusFlag = True
                 self.ui.LED_Zap_Serial_label.setText("Playing Stimulus: Loop 0")
-                self.ui.LEDZap_Start_pushButton.setStyleSheet("color: rgb(250, 250, 250);\n"
-                                                              "background-color: rgb(220, 50, 47);")
         else:
             self.ui.LED_Zap_Serial_label.setText('Load a stimulus to play first')
 
@@ -283,8 +286,6 @@ def PlayStimuli(self):
             if self.ui.NumberofLoop > 0:
                 if self.currentLoop == self.ui.NumberofLoop + 2:
                     StopStimulus(self)
-
-
 
 
 
@@ -435,10 +436,8 @@ def ChangeToggleButton(self,i):
                                                   active_color='#%02x%02x%02x' % tuple(self.RGB)
                                                   )
     self.ui.LEDZap_LED_toggleButton[i].setChecked(True)
-    #print(self.ui.LEDZap_LED_toggleButton[i].objectName())
     self.ui.LED_toggleButton_layout[i].removeItem(self.ui.LED_toggleButton_layout[i].itemAt(2))
     self.ui.LED_toggleButton_layout[i].addWidget(self.ui.LEDZap_LED_toggleButton[i])
-    #print(self.ui.LEDZap_LED_toggleButton[i])
 
     self.ui.LEDZap_LED_toggleButton[i] = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
                                                   circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
@@ -450,12 +449,50 @@ def ChangeToggleButton(self,i):
     self.ui.LEDZap_LED_Slider[i].setValue(100)
 
 
-def TestLED(self):
-    for i in range(self.ui.LEDZap_nLED):
+
+
+def PlayTest(self):
+    if self.ui.TestLEDFlag == True:
+        for i in range(self.ui.LEDZap_nLED):
+            self.LED_Val = self.ui.LEDZap_LED_Slider[i].value()
+            if self.serial_port.is_open:
+                self.serial_port.write(str('T' + str(i + 1) + (' ') + str(self.LED_Val) + '\n').encode('utf-8'))
+                time.sleep(0.01)
+            else:
+                self.ui.LED_Zap_Serial_label.setText('LED Zappelin is not connected: LEDs will not light up')
+
+def PlayTestLED(self,i):
+    if self.ui.TestLEDFlag == True:
         self.LED_Val = self.ui.LEDZap_LED_Slider[i].value()
         if self.serial_port.is_open:
             self.serial_port.write(str('T' + str(i + 1) + (' ') + str(self.LED_Val) + '\n').encode('utf-8'))
-            time.sleep(0.01)
+            #print(str('T' + str(i + 1) + (' ') + str(self.LED_Val)))
         else:
             self.ui.LED_Zap_Serial_label.setText('LED Zappelin is not connected: LEDs will not light up')
 
+
+def TestLED(self):
+    if self.ui.TestLEDFlag == True:
+        self.ui.TestLEDFlag = False
+        self.ui.TestLEDPlayFlag = False
+        self.ui.LEDZap_Test_pushButton.setStyleSheet("color: rgb(147, 161, 161);\n" "background-color: rgb(7, 54, 66);")
+        self.ui.LEDZap_Start_pushButton.setEnabled(True)
+        self.ui.LEDZap_Start_pushButton.setStyleSheet("color: rgb(147, 161, 161);\n" "background-color: rgb(7, 54, 66);")
+        self.ui.LEDZap_Stop_pushButton.setEnabled(True)
+        self.ui.LEDZap_Stop_pushButton.setStyleSheet("color: rgb(147, 161, 161);\n" "background-color: rgb(7, 54, 66);")
+
+
+    elif self.ui.TestLEDFlag == False:
+        self.ui.TestLEDFlag = True
+        self.ui.TestLEDPlayFlag = True
+        self.ui.LEDZap_Test_pushButton.setStyleSheet("color: rgb(250, 250, 250);\n" "background-color: rgb(220, 50, 47);")
+        self.ui.LEDZap_Start_pushButton.setEnabled(False)
+        self.ui.LEDZap_Start_pushButton.setStyleSheet("color: rgb(88, 110, 117);\n" "background-color: rgb(0, 30, 38);")
+        self.ui.LEDZap_Stop_pushButton.setEnabled(False)
+        self.ui.LEDZap_Stop_pushButton.setStyleSheet("color: rgb(88, 110, 117);\n" "background-color: rgb(0, 30, 38);")
+
+
+    if self.ui.TestLEDPlayFlag == True:
+        PlayTest(self)
+    else:
+        self.serial_port.write(('O '+ '\n').encode('utf-8'))

@@ -10,7 +10,7 @@ from PySide6.QtCore import QSize, QPropertyAnimation
 from PySide6.QtWidgets import QSizeGrip
 
 from py_toggle import PyToggle
-import Page101, Page201
+import Page101
 from Colours import *
 
 
@@ -118,6 +118,9 @@ def LEDZapSetup(self):
     self.LED04_Val = self.ui.LED04_Slider.value()
     self.ui.LED04_Value.setText(str(self.LED04_Val) + ' %')
 
+    self.ui.All_LED_Slider.setEnabled(False)
+    self.ui.All_LED_Slider.setValue(0)
+
     self.ui.LED05_Slider.setEnabled(False)
     self.ui.LED05_Slider.setValue(0)
     self.ui.LED06_Slider.setEnabled(False)
@@ -138,332 +141,86 @@ def LEDZapSetup(self):
 
     self.ui.All_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateAllLED(self))
     self.ui.All_LED_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetAllLED(self))
+    self.ui.All_LED_Slider.valueChanged.connect(lambda: Page101.PlayTest(self))
 
     self.ui.LED01_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,0))
     self.ui.LED01_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,0))
+    self.ui.LED01_Slider.valueChanged.connect(lambda: Page101.PlayTestLED(self, 0))
 
     self.ui.LED02_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,1))
     self.ui.LED02_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,1))
+    self.ui.LED02_Slider.valueChanged.connect(lambda: Page101.PlayTestLED(self, 1))
 
     self.ui.LED03_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,2))
     self.ui.LED03_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,2))
+    self.ui.LED03_Slider.valueChanged.connect(lambda: Page101.PlayTestLED(self, 2))
 
     self.ui.LED04_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,3))
     self.ui.LED04_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,3))
+    self.ui.LED04_Slider.valueChanged.connect(lambda: Page101.PlayTestLED(self, 3))
 
     self.ui.LED05_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,4))
     self.ui.LED05_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,4))
+    self.ui.LED05_Slider.valueChanged.connect(lambda: Page101.PlayTestLED(self, 4))
 
     self.ui.LED06_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,5))
     self.ui.LED06_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,5))
+    self.ui.LED06_Slider.valueChanged.connect(lambda: Page101.PlayTestLED(self, 5))
 
     self.ui.LED07_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,6))
     self.ui.LED07_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,6))
+    self.ui.LED07_Slider.valueChanged.connect(lambda: Page101.PlayTestLED(self, 6))
 
     self.ui.LED08_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,7))
     self.ui.LED08_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,7))
+    self.ui.LED08_Slider.valueChanged.connect(lambda: Page101.PlayTestLED(self, 7))
 
     self.ui.LED09_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,8))
     self.ui.LED09_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,8))
+    self.ui.LED09_Slider.valueChanged.connect(lambda: Page101.PlayTestLED(self, 8))
 
     self.ui.LED10_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,9))
     self.ui.LED10_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,9))
+    self.ui.LED10_Slider.valueChanged.connect(lambda: Page101.PlayTestLED(self, 9))
 
     self.ui.LED11_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,10))
     self.ui.LED11_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,10))
+    self.ui.LED11_Slider.valueChanged.connect(lambda: Page101.PlayTestLED(self, 10))
 
     self.ui.LED12_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.ActivateLED(self,11))
     self.ui.LED12_Slider.valueChanged.connect(lambda: Page101.LED_Zappelin.GetLED(self,11))
-
-    self.ui.All_LED_Slider.setEnabled(False)
-    self.ui.All_LED_Slider.setValue(0)
-
-
-def ChrolisSetup(self):
-    Theme(self)
-    self.SerialFlag = False
-    self.serial_port = serial.Serial()
-    # Generate toggle buttons for Chrolis
-    self.ui.ChrolisAll_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                               circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                               active_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[15])
-                                               )
-    self.ui.ChrolisAll_toggleButton_layout.addWidget(self.ui.ChrolisAll_toggleButton)
-
-    self.ui.Chrolis01_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                              circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                              active_color='#%02x%02x%02x' % tuple(self.ui.Chrolis_RGB[0])
-                                              )
-    self.ui.Chrolis01_toggleButton_layout.addWidget(self.ui.Chrolis01_toggleButton)
-
-    self.ui.Chrolis02_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                              circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                              active_color='#%02x%02x%02x' % tuple(self.ui.Chrolis_RGB[1])
-                                              )
-    self.ui.Chrolis02_toggleButton_layout.addWidget(self.ui.Chrolis02_toggleButton)
-
-    self.ui.Chrolis03_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                              circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                              active_color='#%02x%02x%02x' % tuple(self.ui.Chrolis_RGB[2])
-                                              )
-    self.ui.Chrolis03_toggleButton_layout.addWidget(self.ui.Chrolis03_toggleButton)
-
-    self.ui.Chrolis04_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                              circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                              active_color='#%02x%02x%02x' % tuple(self.ui.Chrolis_RGB[3])
-                                              )
-    self.ui.Chrolis04_toggleButton_layout.addWidget(self.ui.Chrolis04_toggleButton)
-
-    self.ui.Chrolis05_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                              circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                              active_color='#%02x%02x%02x' % tuple(self.ui.Chrolis_RGB[4])
-                                              )
-    self.ui.Chrolis05_toggleButton_layout.addWidget(self.ui.Chrolis05_toggleButton)
-
-    self.ui.Chrolis06_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                              circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                              active_color='#%02x%02x%02x' % tuple(self.ui.Chrolis_RGB[5])
-                                              )
-    self.ui.Chrolis06_toggleButton_layout.addWidget(self.ui.Chrolis06_toggleButton)
-
-    self.ui.Chrolis07_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                              circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                              active_color='#%02x%02x%02x' % tuple(self.ui.Chrolis_RGB[6])
-                                              )
-    self.ui.Chrolis07_toggleButton_layout.addWidget(self.ui.Chrolis07_toggleButton)
-
-    self.ui.Chrolis08_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                              circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                              active_color='#%02x%02x%02x' % tuple(self.ui.Chrolis_RGB[7])
-                                              )
-    self.ui.Chrolis08_toggleButton_layout.addWidget(self.ui.Chrolis08_toggleButton)
-
-    self.ui.Chrolis09_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                              circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                              active_color='#%02x%02x%02x' % tuple(self.ui.Chrolis_RGB[8])
-                                              )
-    self.ui.Chrolis09_toggleButton_layout.addWidget(self.ui.Chrolis09_toggleButton)
-
-    self.ui.Chrolis10_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                              circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                              active_color='#%02x%02x%02x' % tuple(self.ui.Chrolis_RGB[9])
-                                              )
-    self.ui.Chrolis10_toggleButton_layout.addWidget(self.ui.Chrolis10_toggleButton)
-
-    self.ui.Chrolis11_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                              circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                              active_color='#%02x%02x%02x' % tuple(self.ui.Chrolis_RGB[10])
-                                              )
-    self.ui.Chrolis11_toggleButton_layout.addWidget(self.ui.Chrolis11_toggleButton)
-
-    self.ui.Chrolis12_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                              circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                              active_color='#%02x%02x%02x' % tuple(self.ui.Chrolis_RGB[11])
-                                              )
-    self.ui.Chrolis12_toggleButton_layout.addWidget(self.ui.Chrolis12_toggleButton)
-
-
-    self.ProxyLED_value = self.ui.Chrolis_ProxyLED_Slider.value()
-    self.ProxyLED_Value = int(self.ProxyLED_value / 255 * 100)
-    self.ui.Chrolis_ProxyLED_value.setText(str(self.ProxyLED_Value) + ' %')
-
-
-    self.ui.Chrolis01_toggleButton.setChecked(True)
-    self.Chrolis01_Val = self.ui.Chrolis01_Slider.value()
-    self.ui.Chrolis01_Value.setText(str(self.Chrolis01_Val) + ' %')
-
-    self.ui.Chrolis02_toggleButton.setChecked(True)
-    self.Chrolis02_Val = self.ui.Chrolis02_Slider.value()
-    self.ui.Chrolis02_Value.setText(str(self.Chrolis02_Val) + ' %')
-
-    self.ui.Chrolis03_toggleButton.setChecked(True)
-    self.Chrolis03_Val = self.ui.Chrolis03_Slider.value()
-    self.ui.Chrolis03_Value.setText(str(self.Chrolis03_Val) + ' %')
-
-    self.ui.Chrolis04_toggleButton.setChecked(True)
-    self.Chrolis04_Val = self.ui.Chrolis04_Slider.value()
-    self.ui.Chrolis04_Value.setText(str(self.Chrolis04_Val) + ' %')
-
-    self.ui.Chrolis05_toggleButton.setChecked(True)
-    self.Chrolis05_Val = self.ui.Chrolis05_Slider.value()
-    self.ui.Chrolis05_Value.setText(str(self.Chrolis05_Val) + ' %')
-
-    self.ui.Chrolis06_toggleButton.setChecked(True)
-    self.Chrolis06_Val = self.ui.Chrolis06_Slider.value()
-    self.ui.Chrolis06_Value.setText(str(self.Chrolis06_Val) + ' %')
-
-    self.ui.Chrolis07_toggleButton.setChecked(True)
-    self.Chrolis07_Val = self.ui.Chrolis07_Slider.value()
-    self.ui.Chrolis07_Value.setText(str(self.Chrolis07_Val) + ' %')
-
-    self.ui.Chrolis08_toggleButton.setChecked(True)
-    self.Chrolis08_Val = self.ui.Chrolis08_Slider.value()
-    self.ui.Chrolis08_Value.setText(str(self.Chrolis08_Val) + ' %')
-
-    self.ui.Chrolis09_toggleButton.setChecked(True)
-    self.Chrolis09_Val = self.ui.Chrolis09_Slider.value()
-    self.ui.Chrolis09_Value.setText(str(self.Chrolis09_Val) + ' %')
-
-    self.ui.Chrolis10_toggleButton.setChecked(True)
-    self.Chrolis10_Val = self.ui.Chrolis10_Slider.value()
-    self.ui.Chrolis10_Value.setText(str(self.Chrolis10_Val) + ' %')
-
-    self.ui.Chrolis11_toggleButton.setChecked(True)
-    self.Chrolis11_Val = self.ui.Chrolis11_Slider.value()
-    self.ui.Chrolis11_Value.setText(str(self.Chrolis11_Val) + ' %')
-
-    self.ui.Chrolis12_toggleButton.setChecked(True)
-    self.Chrolis12_Val = self.ui.Chrolis12_Slider.value()
-    self.ui.Chrolis12_Value.setText(str(self.Chrolis12_Val) + ' %')
-
-    self.ui.ChrolisAll_toggleButton.setChecked(True)
-    self.ChrolisAll_LED_Val = self.ui.ChrolisAll_LED_Slider.value()
-    self.ui.ChrolisAll_LED_value.setText(str(self.ChrolisAll_LED_Val) + ' %')
+    self.ui.LED12_Slider.valueChanged.connect(lambda: Page101.PlayTestLED(self, 11))
 
 
 
 
-    self.ui.ChrolisAll_toggleButton.toggled.connect(lambda: Page201.Chrolis.ActivateChrolisAll(self))
-    self.ui.ChrolisAll_LED_Slider.valueChanged.connect(lambda: Page201.Chrolis.GetChrolisAll(self))
+    # LED toggle buttons
+    self.ui.All_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateAllLED(self))
+    self.ui.LED01_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateLED(self, 0))
+    self.ui.LED02_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateLED(self, 1))
+    self.ui.LED03_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateLED(self, 2))
+    self.ui.LED04_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateLED(self, 3))
+    self.ui.LED05_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateLED(self, 4))
+    self.ui.LED06_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateLED(self, 5))
+    self.ui.LED07_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateLED(self, 6))
+    self.ui.LED08_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateLED(self, 7))
+    self.ui.LED09_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateLED(self, 8))
+    self.ui.LED10_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateLED(self, 9))
+    self.ui.LED11_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateLED(self, 10))
+    self.ui.LED12_toggleButton.toggled.connect(lambda: Page101.LED_Zappelin.DeactivateLED(self, 11))
 
-    self.ui.Chrolis01_toggleButton.toggled.connect(lambda: Page201.Chrolis.ActivateChrolis(self,0))
-    self.ui.Chrolis01_Slider.valueChanged.connect(lambda: Page201.Chrolis.GetChrolis(self,0))
-
-    self.ui.Chrolis02_toggleButton.toggled.connect(lambda: Page201.Chrolis.ActivateChrolis(self,1))
-    self.ui.Chrolis02_Slider.valueChanged.connect(lambda: Page201.Chrolis.GetChrolis(self,1))
-
-    self.ui.Chrolis03_toggleButton.toggled.connect(lambda: Page201.Chrolis.ActivateChrolis(self,2))
-    self.ui.Chrolis03_Slider.valueChanged.connect(lambda: Page201.Chrolis.GetChrolis(self,2))
-
-    self.ui.Chrolis04_toggleButton.toggled.connect(lambda: Page201.Chrolis.ActivateChrolis(self,3))
-    self.ui.Chrolis04_Slider.valueChanged.connect(lambda: Page201.Chrolis.GetChrolis(self,3))
-
-    self.ui.Chrolis05_toggleButton.toggled.connect(lambda: Page201.Chrolis.ActivateChrolis(self,4))
-    self.ui.Chrolis05_Slider.valueChanged.connect(lambda: Page201.Chrolis.GetChrolis(self,4))
-
-    self.ui.Chrolis06_toggleButton.toggled.connect(lambda: Page201.Chrolis.ActivateChrolis(self,5))
-    self.ui.Chrolis06_Slider.valueChanged.connect(lambda: Page201.Chrolis.GetChrolis(self,5))
-
-    self.ui.Chrolis07_toggleButton.toggled.connect(lambda: Page201.Chrolis.ActivateChrolis(self,6))
-    self.ui.Chrolis07_Slider.valueChanged.connect(lambda: Page201.Chrolis.GetChrolis(self,6))
-
-    self.ui.Chrolis08_toggleButton.toggled.connect(lambda: Page201.Chrolis.ActivateChrolis(self,7))
-    self.ui.Chrolis08_Slider.valueChanged.connect(lambda: Page201.Chrolis.GetChrolis(self,7))
-
-    self.ui.Chrolis09_toggleButton.toggled.connect(lambda: Page201.Chrolis.ActivateChrolis(self,8))
-    self.ui.Chrolis09_Slider.valueChanged.connect(lambda: Page201.Chrolis.GetChrolis(self,8))
-
-    self.ui.Chrolis10_toggleButton.toggled.connect(lambda: Page201.Chrolis.ActivateChrolis(self,9))
-    self.ui.Chrolis10_Slider.valueChanged.connect(lambda: Page201.Chrolis.GetChrolis(self,9))
-
-    self.ui.Chrolis11_toggleButton.toggled.connect(lambda: Page201.Chrolis.ActivateChrolis(self,10))
-    self.ui.Chrolis11_Slider.valueChanged.connect(lambda: Page201.Chrolis.GetChrolis(self,10))
-
-    self.ui.Chrolis12_toggleButton.toggled.connect(lambda: Page201.Chrolis.ActivateChrolis(self,11))
-    self.ui.Chrolis12_Slider.valueChanged.connect(lambda: Page201.Chrolis.GetChrolis(self,11))
-
-
-
-def SpectraSetup(self):
-
-    self.ui.Human_Blue_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                                   circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                                   active_color='#%02x%02x%02x' % tuple(self.ui.Opsin_RGB[0][0])
-                                                   )
-    self.ui.Human_Blue_layout.addWidget(self.ui.Human_Blue_toggleButton)
-    self.ui.Human_Blue_toggleButton.setChecked(True)
-    self.ui.Human_Green_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                                   circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                                   active_color='#%02x%02x%02x' % tuple(self.ui.Opsin_RGB[0][1])
-                                                   )
-    self.ui.Human_Green_layout.addWidget(self.ui.Human_Green_toggleButton)
-    self.ui.Human_Green_toggleButton.setChecked(True)
-    self.ui.Human_Red_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                                  circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                                  active_color='#%02x%02x%02x' % tuple(self.ui.Opsin_RGB[0][2])
-                                                  )
-    self.ui.Human_Red_layout.addWidget(self.ui.Human_Red_toggleButton)
-    self.ui.Human_Red_toggleButton.setChecked(True)
-
-
-    self.ui.Zebrafish_UV_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                                 circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                                 active_color='#%02x%02x%02x' % tuple(self.ui.Opsin_RGB[1][0])
-                                                 )
-    self.ui.Zebrafish_UV_layout.addWidget(self.ui.Zebrafish_UV_toggleButton)
-    self.ui.Zebrafish_UV_toggleButton.setChecked(True)
-    self.ui.Zebrafish_Blue_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                                   circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                                   active_color='#%02x%02x%02x' % tuple(self.ui.Opsin_RGB[1][1])
-                                                   )
-    self.ui.Zebrafish_Blue_layout.addWidget(self.ui.Zebrafish_Blue_toggleButton)
-    self.ui.Zebrafish_Blue_toggleButton.setChecked(True)
-    self.ui.Zebrafish_Green_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                                   circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                                   active_color='#%02x%02x%02x' % tuple(self.ui.Opsin_RGB[1][2])
-                                                   )
-    self.ui.Zebrafish_Green_layout.addWidget(self.ui.Zebrafish_Green_toggleButton)
-    self.ui.Zebrafish_Green_toggleButton.setChecked(True)
-    self.ui.Zebrafish_Red_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                                  circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                                  active_color='#%02x%02x%02x' % tuple(self.ui.Opsin_RGB[1][3])
-                                                  )
-    self.ui.Zebrafish_Red_layout.addWidget(self.ui.Zebrafish_Red_toggleButton)
-    self.ui.Zebrafish_Red_toggleButton.setChecked(True)
-
-
-    self.ui.Chicken_UV_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                                 circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                                 active_color='#%02x%02x%02x' % tuple(self.ui.Opsin_RGB[2][0])
-                                                 )
-    self.ui.Chicken_UV_layout.addWidget(self.ui.Chicken_UV_toggleButton)
-    self.ui.Chicken_UV_toggleButton.setChecked(True)
-    self.ui.Chicken_Blue_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                                   circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                                   active_color='#%02x%02x%02x' % tuple(self.ui.Opsin_RGB[2][1])
-                                                   )
-    self.ui.Chicken_Blue_layout.addWidget(self.ui.Chicken_Blue_toggleButton)
-    self.ui.Chicken_Blue_toggleButton.setChecked(True)
-    self.ui.Chicken_Green_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                                    circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                                    active_color='#%02x%02x%02x' % tuple(self.ui.Opsin_RGB[2][2])
-                                                    )
-    self.ui.Chicken_Green_layout.addWidget(self.ui.Chicken_Green_toggleButton)
-    self.ui.Chicken_Green_toggleButton.setChecked(True)
-    self.ui.Chicken_Red_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                                  circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                                  active_color='#%02x%02x%02x' % tuple(self.ui.Opsin_RGB[2][3])
-                                                  )
-    self.ui.Chicken_Red_layout.addWidget(self.ui.Chicken_Red_toggleButton)
-    self.ui.Chicken_Red_toggleButton.setChecked(True)
-
-
-    self.ui.Tetrachromatic_UV_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                                 circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                                 active_color='#%02x%02x%02x' % tuple(self.ui.LED_RGB[0][0])
-                                                 )
-    self.ui.Tetrachromatic_UV_layout.addWidget(self.ui.Tetrachromatic_UV_toggleButton)
-    self.ui.Tetrachromatic_UV_toggleButton.setChecked(True)
-    self.ui.Tetrachromatic_Blue_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                                   circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                                   active_color='#%02x%02x%02x' % tuple(self.ui.LED_RGB[0][1])
-                                                   )
-    self.ui.Tetrachromatic_Blue_layout.addWidget(self.ui.Tetrachromatic_Blue_toggleButton)
-    self.ui.Tetrachromatic_Blue_toggleButton.setChecked(True)
-    self.ui.Tetrachromatic_Green_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                                    circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                                    active_color='#%02x%02x%02x' % tuple(self.ui.LED_RGB[0][2])
-                                                    )
-    self.ui.Tetrachromatic_Green_layout.addWidget(self.ui.Tetrachromatic_Green_toggleButton)
-    self.ui.Tetrachromatic_Green_toggleButton.setChecked(True)
-    self.ui.Tetrachromatic_Red_toggleButton = PyToggle(bg_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[11]),
-                                                  circle_color='#%02x%02x%02x' % tuple(self.ui.DarkSolarized[0]),
-                                                  active_color='#%02x%02x%02x' % tuple(self.ui.LED_RGB[0][3])
-                                                  )
-    self.ui.Tetrachromatic_Red_layout.addWidget(self.ui.Tetrachromatic_Red_toggleButton)
-    self.ui.Tetrachromatic_Red_toggleButton.setChecked(True)
-
-
+    self.ui.LED01_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 0))
+    self.ui.LED02_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 1))
+    self.ui.LED03_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 2))
+    self.ui.LED04_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 3))
+    self.ui.LED05_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 4))
+    self.ui.LED06_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 5))
+    self.ui.LED07_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 6))
+    self.ui.LED08_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 7))
+    self.ui.LED09_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 8))
+    self.ui.LED10_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 9))
+    self.ui.LED11_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 10))
+    self.ui.LED12_Display_lineEdit.textChanged.connect(lambda: Page101.ChangeToggleButton(self, 11))
 
 animation_speed = 500
 leftMenu_min = 40
